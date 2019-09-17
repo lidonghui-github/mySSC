@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hd.mapper.DriverMapper" >
+  <resultMap id="BaseResultMap" type="cn.hd.model.Driver" >
+    <id column="driver_id" property="driverId" jdbcType="VARCHAR" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+    <result column="driver_sex" property="driverSex" jdbcType="VARCHAR" />
+    <result column="driver_idcard_number" property="driverIdcardNumber" jdbcType="VARCHAR" />
+    <result column="driver_tel_number" property="driverTelNumber" jdbcType="VARCHAR" />
+    <result column="driver_crt_time" property="driverCrtTime" jdbcType="TIMESTAMP" />
+    <result column="driver_operation_status" property="driverOperationStatus" jdbcType="VARCHAR" />
+    <result column="driver_address" property="driverAddress" jdbcType="VARCHAR" />
+    <result column="driver_finised_order_sum" property="driverFinisedOrderSum" jdbcType="INTEGER" />
+    <result column="driver_current_order_number" property="driverCurrentOrderNumber" jdbcType="VARCHAR" />
+    <result column="driver_last_order_end_time" property="driverLastOrderEndTime" jdbcType="TIMESTAMP" />
+    <result column="cancellation_time" property="cancellationTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    driver_id as driverId, driver_name as driverName, driver_sex as driverSex, driver_idcard_number as driverIdcardNumber, driver_tel_number as driverTelNumber, driver_crt_time as driverCrtTime, 
+    driver_operation_status as driverOperationStatus, driver_address as driverAddress, driver_finised_order_sum as driverFinisedOrderSum, driver_current_order_number as driverCurrentOrderNumber, 
+    driver_last_order_end_time as driverLastOrderEndTime, cancellation_time as cancellationTime, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_driver
+    where driver_id = #{driverId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_driver
+    where driver_id = #{driverId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hd.model.Driver" >
+    insert into t_driver (driver_id, driver_name, driver_sex, 
+      driver_idcard_number, driver_tel_number, driver_crt_time, 
+      driver_operation_status, driver_address, driver_finised_order_sum, 
+      driver_current_order_number, driver_last_order_end_time, 
+      cancellation_time, remark)
+    values (#{driverId,jdbcType=VARCHAR}, #{driverName,jdbcType=VARCHAR}, #{driverSex,jdbcType=VARCHAR}, 
+      #{driverIdcardNumber,jdbcType=VARCHAR}, #{driverTelNumber,jdbcType=VARCHAR}, #{driverCrtTime,jdbcType=TIMESTAMP}, 
+      #{driverOperationStatus,jdbcType=VARCHAR}, #{driverAddress,jdbcType=VARCHAR}, #{driverFinisedOrderSum,jdbcType=INTEGER}, 
+      #{driverCurrentOrderNumber,jdbcType=VARCHAR}, #{driverLastOrderEndTime,jdbcType=TIMESTAMP}, 
+      #{cancellationTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hd.model.Driver" >
+    insert into t_driver
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="driverId != null" >
+        driver_id,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+      <if test="driverSex != null" >
+        driver_sex,
+      </if>
+      <if test="driverIdcardNumber != null" >
+        driver_idcard_number,
+      </if>
+      <if test="driverTelNumber != null" >
+        driver_tel_number,
+      </if>
+      <if test="driverCrtTime != null" >
+        driver_crt_time,
+      </if>
+      <if test="driverOperationStatus != null" >
+        driver_operation_status,
+      </if>
+      <if test="driverAddress != null" >
+        driver_address,
+      </if>
+      <if test="driverFinisedOrderSum != null" >
+        driver_finised_order_sum,
+      </if>
+      <if test="driverCurrentOrderNumber != null" >
+        driver_current_order_number,
+      </if>
+      <if test="driverLastOrderEndTime != null" >
+        driver_last_order_end_time,
+      </if>
+      <if test="cancellationTime != null" >
+        cancellation_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="driverId != null" >
+        #{driverId,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverSex != null" >
+        #{driverSex,jdbcType=VARCHAR},
+      </if>
+      <if test="driverIdcardNumber != null" >
+        #{driverIdcardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverTelNumber != null" >
+        #{driverTelNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverCrtTime != null" >
+        #{driverCrtTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverOperationStatus != null" >
+        #{driverOperationStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="driverAddress != null" >
+        #{driverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="driverFinisedOrderSum != null" >
+        #{driverFinisedOrderSum,jdbcType=INTEGER},
+      </if>
+      <if test="driverCurrentOrderNumber != null" >
+        #{driverCurrentOrderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLastOrderEndTime != null" >
+        #{driverLastOrderEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancellationTime != null" >
+        #{cancellationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.Driver" >
+    update t_driver
+    <set >
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverSex != null" >
+        driver_sex = #{driverSex,jdbcType=VARCHAR},
+      </if>
+      <if test="driverIdcardNumber != null" >
+        driver_idcard_number = #{driverIdcardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverTelNumber != null" >
+        driver_tel_number = #{driverTelNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverCrtTime != null" >
+        driver_crt_time = #{driverCrtTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverOperationStatus != null" >
+        driver_operation_status = #{driverOperationStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="driverAddress != null" >
+        driver_address = #{driverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="driverFinisedOrderSum != null" >
+        driver_finised_order_sum = #{driverFinisedOrderSum,jdbcType=INTEGER},
+      </if>
+      <if test="driverCurrentOrderNumber != null" >
+        driver_current_order_number = #{driverCurrentOrderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLastOrderEndTime != null" >
+        driver_last_order_end_time = #{driverLastOrderEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancellationTime != null" >
+        cancellation_time = #{cancellationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where driver_id = #{driverId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hd.model.Driver" >
+    update t_driver
+    set driver_name = #{driverName,jdbcType=VARCHAR},
+      driver_sex = #{driverSex,jdbcType=VARCHAR},
+      driver_idcard_number = #{driverIdcardNumber,jdbcType=VARCHAR},
+      driver_tel_number = #{driverTelNumber,jdbcType=VARCHAR},
+      driver_crt_time = #{driverCrtTime,jdbcType=TIMESTAMP},
+      driver_operation_status = #{driverOperationStatus,jdbcType=VARCHAR},
+      driver_address = #{driverAddress,jdbcType=VARCHAR},
+      driver_finised_order_sum = #{driverFinisedOrderSum,jdbcType=INTEGER},
+      driver_current_order_number = #{driverCurrentOrderNumber,jdbcType=VARCHAR},
+      driver_last_order_end_time = #{driverLastOrderEndTime,jdbcType=TIMESTAMP},
+      cancellation_time = #{cancellationTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where driver_id = #{driverId,jdbcType=VARCHAR}
+  </update>
+    <select id="queryAll" resultType="cn.hd.model.Driver">
+		select <include refid="Base_Column_List" /> from t_driver
+	</select>
+	<select id="query" resultType="cn.hd.model.Driver" parameterType="BaseConditionVO">
+		select
+		<include refid="Base_Column_List" />
+		from t_driver
+		<where>
+			<if test="keywords!=null">
+				driver_name like "%"#{keywords}"%"
+			
+			or
+			
+			driver_tel_number like "%"#{keywords}"%"
+			</if>
+		</where>
+	</select>
+</mapper>

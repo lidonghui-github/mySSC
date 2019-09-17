@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hd.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="cn.hd.model.Order" >
+    <id column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="order_crt_user_no" property="orderCrtUserNo" jdbcType="VARCHAR" />
+    <result column="order_crt_time" property="orderCrtTime" jdbcType="TIMESTAMP" />
+    <result column="order_upd_time" property="orderUpdTime" jdbcType="TIMESTAMP" />
+    <result column="order_status" property="orderStatus" jdbcType="VARCHAR" />
+    <result column="order_operate_status" property="orderOperateStatus" jdbcType="VARCHAR" />
+    <result column="order_driver_no" property="orderDriverNo" jdbcType="VARCHAR" />
+    <result column="order_origin" property="orderOrigin" jdbcType="VARCHAR" />
+    <result column="order_destination" property="orderDestination" jdbcType="VARCHAR" />
+    <result column="order_appointmen_time" property="orderAppointmenTime" jdbcType="TIMESTAMP" />
+    <result column="order_upd_user_no" property="orderUpdUserNo" jdbcType="VARCHAR" />
+    <result column="order_customer_no" property="orderCustomerNo" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_no as orderNo, order_crt_user_no as orderCrtUserNo, order_crt_time as orderCrtTime, order_upd_time as orderUpdTime, order_status as orderStatus, order_operate_status as orderOperateStatus, 
+    order_driver_no as orderDriverNo, order_origin as orderOrigin, order_destination as orderDestination, order_appointmen_time as orderAppointmenTime, order_upd_user_no as orderUpdUserNo, 
+    order_customer_no as orderCustomerNo, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_order
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hd.model.Order" >
+    insert into t_order (order_no, order_crt_user_no, order_crt_time, 
+      order_upd_time, order_status, order_operate_status, 
+      order_driver_no, order_origin, order_destination, 
+      order_appointmen_time, order_upd_user_no, 
+      order_customer_no, remark)
+    values (#{orderNo,jdbcType=VARCHAR}, #{orderCrtUserNo,jdbcType=VARCHAR}, #{orderCrtTime,jdbcType=TIMESTAMP}, 
+      #{orderUpdTime,jdbcType=TIMESTAMP}, #{orderStatus,jdbcType=VARCHAR}, #{orderOperateStatus,jdbcType=VARCHAR}, 
+      #{orderDriverNo,jdbcType=VARCHAR}, #{orderOrigin,jdbcType=VARCHAR}, #{orderDestination,jdbcType=VARCHAR}, 
+      #{orderAppointmenTime,jdbcType=TIMESTAMP}, #{orderUpdUserNo,jdbcType=VARCHAR}, 
+      #{orderCustomerNo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hd.model.Order" >
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="orderCrtUserNo != null" >
+        order_crt_user_no,
+      </if>
+      <if test="orderCrtTime != null" >
+        order_crt_time,
+      </if>
+      <if test="orderUpdTime != null" >
+        order_upd_time,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="orderOperateStatus != null" >
+        order_operate_status,
+      </if>
+      <if test="orderDriverNo != null" >
+        order_driver_no,
+      </if>
+      <if test="orderOrigin != null" >
+        order_origin,
+      </if>
+      <if test="orderDestination != null" >
+        order_destination,
+      </if>
+      <if test="orderAppointmenTime != null" >
+        order_appointmen_time,
+      </if>
+      <if test="orderUpdUserNo != null" >
+        order_upd_user_no,
+      </if>
+      <if test="orderCustomerNo != null" >
+        order_customer_no,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCrtUserNo != null" >
+        #{orderCrtUserNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCrtTime != null" >
+        #{orderCrtTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdTime != null" >
+        #{orderUpdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOperateStatus != null" >
+        #{orderOperateStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDriverNo != null" >
+        #{orderDriverNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOrigin != null" >
+        #{orderOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDestination != null" >
+        #{orderDestination,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAppointmenTime != null" >
+        #{orderAppointmenTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdUserNo != null" >
+        #{orderUpdUserNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCustomerNo != null" >
+        #{orderCustomerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.Order" >
+    update t_order
+    <set >
+      <if test="orderCrtUserNo != null" >
+        order_crt_user_no = #{orderCrtUserNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCrtTime != null" >
+        order_crt_time = #{orderCrtTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdTime != null" >
+        order_upd_time = #{orderUpdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOperateStatus != null" >
+        order_operate_status = #{orderOperateStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDriverNo != null" >
+        order_driver_no = #{orderDriverNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOrigin != null" >
+        order_origin = #{orderOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDestination != null" >
+        order_destination = #{orderDestination,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAppointmenTime != null" >
+        order_appointmen_time = #{orderAppointmenTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdUserNo != null" >
+        order_upd_user_no = #{orderUpdUserNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCustomerNo != null" >
+        order_customer_no = #{orderCustomerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hd.model.Order" >
+    update t_order
+    set order_crt_user_no = #{orderCrtUserNo,jdbcType=VARCHAR},
+      order_crt_time = #{orderCrtTime,jdbcType=TIMESTAMP},
+      order_upd_time = #{orderUpdTime,jdbcType=TIMESTAMP},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      order_operate_status = #{orderOperateStatus,jdbcType=VARCHAR},
+      order_driver_no = #{orderDriverNo,jdbcType=VARCHAR},
+      order_origin = #{orderOrigin,jdbcType=VARCHAR},
+      order_destination = #{orderDestination,jdbcType=VARCHAR},
+      order_appointmen_time = #{orderAppointmenTime,jdbcType=TIMESTAMP},
+      order_upd_user_no = #{orderUpdUserNo,jdbcType=VARCHAR},
+      order_customer_no = #{orderCustomerNo,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+    <select id="queryAll" resultType="cn.hd.model.Order">
+		select <include refid="Base_Column_List" /> from t_order
+	</select>
+	<select id="query" resultType="cn.hd.model.Order" parameterType="BaseConditionVO">
+		select
+		<include refid="Base_Column_List" />
+		from t_order
+		<where>
+			<if test="keywords!=null">
+			order_no like "%"#{keywords}"%"			
+			or			
+			order_customer_no like "%"#{keywords}"%"
+			or
+			order_driver_no like "%"#{keywords}"%"			
+			</if>
+		</where>
+	</select>
+</mapper>
