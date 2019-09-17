@@ -28,7 +28,7 @@
 
 		<div class="dl-log">
 			欢迎您，<span class="dl-log-user">root</span><a
-				href="/chinapost/index.php?m=Public&a=logout" title="退出系统"
+				href="<%=basePath%>/login/login" title="退出系统"
 				class="dl-log-quit">[退出]</a>
 		</div>
 	</div>
