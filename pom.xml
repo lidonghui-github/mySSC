@@ -205,7 +205,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
 					<port>8081</port>
-					<path>/ntmd</path>
+					<path>/mySSC</path>
 				</configuration>
 			</plugin>
 		</plugins>

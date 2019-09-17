@@ -37,7 +37,7 @@ public class LoginController {
 			 System.out.println("登录失败！");
 			 return "redirect:/login.jsp";
 		 }else{
-			 return "redirect:/driver/query";
+			 return "redirect:/index.jsp";
 		 }
 				
 	
