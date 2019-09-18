@@ -6,10 +6,11 @@ import cn.hd.model.LoginLog;
 import cn.hd.service.ILoginLogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-
+@Service
 public class LoginLogServiceImpl implements ILoginLogService {
     @Resource
     LoginLogMapper loginLogMapper;

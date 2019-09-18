@@ -3,6 +3,7 @@
  <div>
         共有${pageModel.total }条记录，共${pageModel.pages }页，每页
       <select name="pageSize" onchange="changePageSize(this.value)" style="width: 50px;">
+          <option value="5" ${pageModel.pageSize==5?"selected":"" }>5</option>
           <option value="10" ${pageModel.pageSize==10?"selected":"" }>10</option>
           <option value="20"  ${pageModel.pageSize==20?"selected":"" }>20</option>
           <option value="50"  ${pageModel.pageSize==50?"selected":"" }>50</option>

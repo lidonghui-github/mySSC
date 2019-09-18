@@ -166,7 +166,7 @@
                 items: [{
                     id: '51',
                     text: '登录信息管理',
-                    href: 'order/query'
+                    href: 'login/query'
                 }]
             }]
         }];
