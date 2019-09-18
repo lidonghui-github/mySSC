@@ -74,20 +74,5 @@ public class test001 {
 		System.out.println(t.toString());
 	}
 
-	@Test
-	public void test3() {
-		treeMapper = ac.getBean(TreeMapper.class);
-		Tree t = new Tree();
-		t.setDimCode("001");
-		t = treeMapper.selectByPrimaryKey("LCMS20190526092213");
-		compareTwoTrees = ac.getBean(CompareTwoTrees.class);
-		compareTwoTrees.checkTwoTree("LCMS20190526092213", "LCMS20190526092643");
-		if(t!=null){
-			System.out.println(t.toString());
-			}
-	}
-	
-	
 
-	CompareTwoTrees compareTwoTrees;
 }

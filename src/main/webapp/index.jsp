@@ -58,6 +58,11 @@
                         class="nav-item-inner nav-home">订单管理
                 </div>
             </li>
+            <li class="nav-item dl-selected">
+                <div
+                        class="nav-item-inner nav-home">登录管理
+                </div>
+            </li>
         </ul>
     </div>
     <ul id="J_NavContent" class="dl-tab-conten">
@@ -154,6 +159,28 @@
                     href: 'checkedout/query'
                 }]
             }]
+        },{
+            id: '5',
+            menu: [{
+                text: '登录模块模块',
+                items: [{
+                    id: '51',
+                    text: '订单信息管理',
+                    href: 'order/query'
+                }, {
+                    id: '52',
+                    text: '未完成订单管理',
+                    href: 'checkedout/query'
+                }, {
+                    id: '53',
+                    text: '已完成订单管理',
+                    href: 'checkedout/query'
+                }, {
+                    id: '54',
+                    text: '失效订单管理',
+                    href: 'checkedout/query'
+                }]
+            }]
         }];
         new PageUtil.MainPage({
             modulesConfig: config
@@ -162,7 +189,7 @@
 </script>
 <div style="text-align:center;">
     <p>
-        来源：<a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+        来源：<a href="http://www.baidu.com/" target="_blank">源码之家</a>
     </p>
 </div>
 </body>
