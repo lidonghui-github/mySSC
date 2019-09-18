@@ -165,20 +165,8 @@
                 text: '登录模块模块',
                 items: [{
                     id: '51',
-                    text: '订单信息管理',
+                    text: '登录信息管理',
                     href: 'order/query'
-                }, {
-                    id: '52',
-                    text: '未完成订单管理',
-                    href: 'checkedout/query'
-                }, {
-                    id: '53',
-                    text: '已完成订单管理',
-                    href: 'checkedout/query'
-                }, {
-                    id: '54',
-                    text: '失效订单管理',
-                    href: 'checkedout/query'
                 }]
             }]
         }];

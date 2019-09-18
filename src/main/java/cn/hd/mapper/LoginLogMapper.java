@@ -1,7 +1,11 @@
 package cn.hd.mapper;
 
+import cn.hd.model.BaseConditionVO;
 import cn.hd.model.LoginLog;
+
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface LoginLogMapper {
@@ -16,4 +20,9 @@ public interface LoginLogMapper {
     int updateByPrimaryKeySelective(LoginLog record);
 
     int updateByPrimaryKey(LoginLog record);
+
+    List<LoginLog> query(BaseConditionVO vo);
+
+    List<LoginLog> queryAll();
+
 }
