@@ -72,23 +72,23 @@ body {
 
 			</tr>
 		</thead>
-		<c:forEach items="${pageModel.list}" var="u">
+		<c:forEach items="${pageModel.list}" var="orderExtend">
 			<tr>
-				<td>${u.orderNo }</td>
-				<td>${u.orderCrtUserNo }</td>
-				<td>${u.orderCrtTime }</td>
-				<td>${u.orderUpdTime }</td>
-				<td>${u.orderStatus }</td>
-				<td>${u.orderOperateStatus }</td>
-				<td>${u.orderDriverNo }</td>
-				<td>${u.orderOrigin }</td>
-				<td>${u.orderDestination }</td>
-				<td>${u.orderAppointmenTime }</td>
-				<td>${u.orderUpdUserNo }</td>
-				<td>${u.orderCustomerNo }</td>
-				<td>${u.remark }</td>
-				<td><a href="order/updatePage/${u.orderNo }">编辑</a> <a
-					href="order/delete/${u.orderNo }">删除</a></td>
+				<td>${orderExtend.orderNo }</td>
+				<td>${orderExtend.orderCrtUserNo }</td>
+				<td>${orderExtend.orderCrtTime }</td>
+				<td>${orderExtend.orderUpdTime }</td>
+				<td>${orderExtend.orderStatus }</td>
+				<td>${orderExtend.orderOperateStatus }</td>
+				<td>${orderExtend.orderDriverNo }</td>
+				<td>${orderExtend.orderOrigin }</td>
+				<td>${orderExtend.orderDestination }</td>
+				<td>${orderExtend.orderAppointmenTime }</td>
+				<td>${orderExtend.orderUpdUserNo }</td>
+				<td>${orderExtend.orderCustomerNo }</td>
+				<td>${orderExtend.remark }</td>
+				<td><a href="order/updatePage/${orderExtend.orderNo }">编辑</a> <a
+					href="order/delete/${orderExtend.orderNo }">删除</a></td>
 			</tr>
 		</c:forEach>
 	</table>
