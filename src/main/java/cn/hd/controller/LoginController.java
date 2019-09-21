@@ -36,6 +36,7 @@ public class LoginController {
                     System.out.println(u.toString());
                     insertLoginLog(u, request);
                     flag = true;
+                    request.setAttribute("user", u);
                     break;
                 }
             }
