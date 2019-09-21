@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
- * @Author :Created by 贡宏才 .
+ * @Author :Created by
  * @Date : 2016/4/13 19:55
  * @Description: 获取交易流水号 或唯一主键
  */

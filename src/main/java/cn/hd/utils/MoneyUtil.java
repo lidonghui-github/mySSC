@@ -3,7 +3,7 @@ package cn.hd.utils;
 import java.math.BigDecimal;
 
 /**
- * @Author :Created by 贡宏才 .
+ * @Author :Created by
  * @Date : 2016/4/14 10:12
  * @Description: 关于交易金额的工具类
  */

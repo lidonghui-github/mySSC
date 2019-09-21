@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by ${李仕超} on 2016/8/19.
+ * Created by  on 2016/8/19.
  */
 public class MultiMap<K, V> extends HashMap<K, V> {
     public MultiMap() {

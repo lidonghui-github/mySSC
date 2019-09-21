@@ -3,7 +3,7 @@ package cn.hd.utils;
 import java.math.BigDecimal;
 
 /**
- * Created by 孙刚 on 2016/7/11.
+ * Created by on 2016/7/11.
  */
 public class BigDecimalUtil {
     public static BigDecimal add(BigDecimal a, BigDecimal b) {
