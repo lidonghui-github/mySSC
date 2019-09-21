@@ -63,6 +63,11 @@
                         class="nav-item-inner nav-home">登录管理
                 </div>
             </li>
+            <li class="nav-item dl-selected">
+                <div
+                        class="nav-item-inner nav-home">额度管理
+                </div>
+            </li>
         </ul>
     </div>
     <ul id="J_NavContent" class="dl-tab-conten">
@@ -162,10 +167,32 @@
         },{
             id: '5',
             menu: [{
-                text: '登录模块模块',
+                text: '登录模块',
                 items: [{
                     id: '51',
                     text: '登录信息管理',
+                    href: 'login/query'
+                }]
+            }]
+        },{
+            id: '6',
+            menu: [{
+                text: '额度模块',
+                items: [{
+                    id: '61',
+                    text: '额度信息管理',
+                    href: 'login/query'
+                },{
+                    id: '62',
+                    text: '额度使用信息管理',
+                    href: 'login/query'
+                },{
+                    id: '63',
+                    text: '额度冻结信息管理',
+                    href: 'login/query'
+                },{
+                    id: '64',
+                    text: '额度解冻信息管理',
                     href: 'login/query'
                 }]
             }]
