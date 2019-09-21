@@ -1,7 +1,9 @@
 package cn.hd.mapper;
 
 import cn.hd.model.Tree;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface TreeMapper {
     int deleteByPrimaryKey(String id);
 

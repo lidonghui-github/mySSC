@@ -5,7 +5,9 @@ import java.util.List;
 import cn.hd.model.BaseConditionVO;
 
 import cn.hd.model.Order;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OrderMapper {
     int deleteByPrimaryKey(String orderNo);
 

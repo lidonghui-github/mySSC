@@ -16,7 +16,6 @@ import com.alibaba.fastjson.JSON;
 
 import cn.hd.mapper.TreeMapper;
 import cn.hd.model.Role;
-import cn.hd.model.Tree;
 import cn.hd.service.IRoleService;
 
 import cn.hd.utils.UUIDUtil;
@@ -62,17 +61,6 @@ public class test001 {
 		}
 	}
 
-	@Test
-	public void test2() {
-		treeMapper = ac.getBean(TreeMapper.class);
-		Tree t = new Tree();
-		t.setDimCode("001");
-		t.setNodeNo(UUIDUtil.getNumId().substring(0, 18));
-		t.setRescriptumno("20190526001");
-		t.setUpNodeNo(null);
-		treeMapper.insert(t);
-		System.out.println(t.toString());
-	}
 
 
 }

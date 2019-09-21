@@ -1,7 +1,9 @@
 package cn.hd.mapper;
 
 import cn.hd.model.Froz;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface FrozMapper {
     int deleteByPrimaryKey(String id);
 
