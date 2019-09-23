@@ -54,7 +54,7 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th colspan="1" height="10px">节点id号</th>
+       <%-- <th colspan="1" height="10px">节点id号</th>--%>
         <th colspan="1" height="10px">节点号</th>
         <th colspan="1" height="10px">节点名称</th>
         <th colspan="1" height="10px">上级节点号</th>
@@ -76,7 +76,7 @@
     </thead>
     <c:forEach items="${pageModel.list}" var="tree">
         <tr>
-            <td>${tree.id}</td>
+           <%-- <td>${tree.id}</td>--%>
             <td>${tree.treeNo}</td>
             <td>${tree.treeName }</td>
             <td>${tree.upTreeNo }</td>
