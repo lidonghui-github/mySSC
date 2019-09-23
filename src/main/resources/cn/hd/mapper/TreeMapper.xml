@@ -250,4 +250,11 @@
       </if>
     </where>
   </select>
+
+
+  <select id="selectByTreeNo" resultType="cn.hd.model.Tree" parameterType="String">
+    select
+    <include refid="Base_Column_List"/>
+    from t_tree where tree_no = #{0}
+  </select>
 </mapper>

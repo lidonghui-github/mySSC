@@ -54,28 +54,29 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th colspan="1" >节点id号</th>
-        <th colspan="1">节点号</th>
-        <th colspan="1">节点名称</th>
-        <th colspan="1">上级节点号</th>
-        <th colspan="1">批复号</th>
-        <th colspan="1">额度状态</th>
-        <th colspan="1">冻结状态</th>
-        <th colspan="1">授信金额</th>
-        <th colspan="1">已用授信金额</th>
-        <th colspan="1">冻结授信金额</th>
-        <th colspan="1">可用授信金额</th>
-        <th colspan="1">创建时间</th>
-        <th colspan="1">更新时间</th>
-        <th colspan="1">版本号</th>
-        <th colspan="1">备注</th>
-        <th colspan="1">操作</th>
+        <th colspan="1" height="10px">节点id号</th>
+        <th colspan="1" height="10px">节点号</th>
+        <th colspan="1" height="10px">节点名称</th>
+        <th colspan="1" height="10px">上级节点号</th>
+        <th colspan="1" height="10px">批复号</th>
+        <th colspan="1" height="10px">额度状态</th>
+        <th colspan="1" height="10px">冻结状态</th>
+        <th colspan="1" height="10px">授信金额</th>
+        <th colspan="1" height="10px">已用授信金额</th>
+        <th colspan="1" height="10px">冻结授信金额</th>
+        <th colspan="1" height="10px">可用授信金额</th>
+        <th colspan="1" height="10px">创建时间</th>
+        <th colspan="1" height="10px">更新时间</th>
+        <th colspan="1" height="10px">版本号</th>
+        <th colspan="1" height="10px">备注</th>
+        <th colspan="1" height="10px">操作</th>
+        <th colspan="2" height="10px">冻结/解冻</th>
 
     </tr>
     </thead>
     <c:forEach items="${pageModel.list}" var="tree">
         <tr>
-            <td >${tree.id}</td>
+            <td>${tree.id}</td>
             <td>${tree.treeNo}</td>
             <td>${tree.treeName }</td>
             <td>${tree.upTreeNo }</td>
@@ -93,6 +94,9 @@
 
             <td><a href="tree/updatePage/${tree.id }">编辑</a>
                 <a id="delete" href="tree/delete/${tree.id }">删除</a>
+            </td>
+            <td><a id="froz" href="froz/frozPage/${tree.treeNo}">冻结</a>
+                <a id="tthaw" href="froz/tthawPage/${tree.treeNo}">解冻</a>
             </td>
         </tr>
     </c:forEach>
@@ -124,6 +128,21 @@
 
             }
         });
+        $('#froz').click(function () {
+                if (confirm("确定冻结吗？")) {
+                    var url = "<%=path%>/tree/query";
+                    window.location.href = url;
+                }
+            }
+        );
+        $('#tthaw').click(function () {
+                if (confirm("确定解冻吗？")) {
+                    var url = "<%=path%>/tree/query";
+                    window.location.href = url;
+                }
+            }
+        );
+
 
     });
 

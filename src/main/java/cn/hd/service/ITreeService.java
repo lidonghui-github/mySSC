@@ -7,6 +7,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
 public interface ITreeService {
     int deleteByPrimaryKey(String id);
@@ -20,6 +21,14 @@ public interface ITreeService {
     int updateByPrimaryKeySelective(Tree record);
 
     int updateByPrimaryKey(Tree record);
+
     List<Tree> queryAll();
+
     PageInfo<Tree> query(BaseConditionVO vo);
+
+    Tree selectByTreeNo(String treeNo);
+
+    int frozTree(Tree record);
+
+    int tthawTree(Tree record);
 }

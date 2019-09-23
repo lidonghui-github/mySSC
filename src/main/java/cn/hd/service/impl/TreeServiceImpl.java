@@ -89,4 +89,32 @@ public class TreeServiceImpl implements ITreeService {
         PageInfo<Tree> pageInfo = new PageInfo<Tree>(list);
         return pageInfo;
     }
+
+    @Override
+    public Tree selectByTreeNo(String treeNo) {
+        return treeMapper.selectByTreeNo(treeNo);
+    }
+
+    @Override
+    public int frozTree(Tree tree) {
+        tree.setFrozAmt(tree.getApprAmt());
+        tree.setFrozStat(FrozStat.全部冻结.getCode());
+        tree.setEnabAmt(tree.getApprAmt() - tree.getUsedAmt() - tree.getFrozAmt());
+        tree.setVerNo(tree.getVerNo() + 1);
+        tree.setUpdTime(DateUtil.getCurrentDateTime());
+        tree.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(tree.getUpdTime()));
+        return treeMapper.updateByPrimaryKey(tree);
+
+    }
+
+    @Override
+    public int tthawTree(Tree tree) {
+        tree.setFrozAmt(0);
+        tree.setFrozStat(FrozStat.未冻结.getCode());
+        tree.setEnabAmt(tree.getApprAmt() - tree.getUsedAmt() - tree.getFrozAmt());
+        tree.setVerNo(tree.getVerNo() + 1);
+        tree.setUpdTime(DateUtil.getCurrentDateTime());
+        tree.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(tree.getUpdTime()));
+        return treeMapper.updateByPrimaryKey(tree);
+    }
 }

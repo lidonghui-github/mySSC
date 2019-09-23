@@ -22,4 +22,6 @@ public interface TreeMapper {
     int updateByPrimaryKey(Tree record);
     List<Tree> queryAll();
     List<Tree> query(BaseConditionVO vo);
+
+    Tree selectByTreeNo(String treeNo);
 }
