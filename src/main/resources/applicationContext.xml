@@ -51,6 +51,7 @@
         <tx:attributes>
             <!-- 以如下关键字开头的方法使用事物 -->
             <tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
             <tx:method name="save*" propagation="REQUIRED" />
             <tx:method name="update*" propagation="REQUIRED"/>
             <tx:method name="modify*" propagation="REQUIRED"/>

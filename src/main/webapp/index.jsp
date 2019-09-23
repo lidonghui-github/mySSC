@@ -181,19 +181,19 @@
                 items: [{
                     id: '61',
                     text: '额度信息管理',
-                    href: 'login/query'
+                    href: 'tree/query'
                 },{
                     id: '62',
                     text: '额度使用信息管理',
-                    href: 'login/query'
+                    href: 'tree/query'
                 },{
                     id: '63',
                     text: '额度冻结信息管理',
-                    href: 'login/query'
+                    href: 'tree/query'
                 },{
                     id: '64',
                     text: '额度解冻信息管理',
-                    href: 'login/query'
+                    href: 'tree/query'
                 }]
             }]
         }];

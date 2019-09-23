@@ -1,7 +1,11 @@
 package cn.hd.mapper;
 
+import cn.hd.model.BaseConditionVO;
+
 import cn.hd.model.Tree;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface TreeMapper {
@@ -16,4 +20,6 @@ public interface TreeMapper {
     int updateByPrimaryKeySelective(Tree record);
 
     int updateByPrimaryKey(Tree record);
+    List<Tree> queryAll();
+    List<Tree> query(BaseConditionVO vo);
 }

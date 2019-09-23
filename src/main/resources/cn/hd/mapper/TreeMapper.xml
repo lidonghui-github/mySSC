@@ -21,8 +21,8 @@
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, tree_name, tree_no, up_tree_no, appr_no, froz_stat, crdt_stat, appr_amt, used_amt, 
-    enab_amt, froz_amt, crt_time, crt_time_format, upd_time, upd_time_format, ver_no, 
+    id, tree_name as treeName, tree_no as treeNo, up_tree_no as upTreeNo, appr_no as apprNo, froz_stat as frozStat, crdt_stat as crdtStat, appr_amt as apprAmt, used_amt as usedAmt,
+    enab_amt as enabAmt, froz_amt as frozAmt, crt_time as crtTime , crt_time_format as crtTimeFormat, upd_time as updTime, upd_time_format as updTimeFormat, ver_no as verNo,
     remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -232,4 +232,22 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <select id="queryAll" resultType="cn.hd.model.Tree">
+    select
+    <include refid="Base_Column_List"/>
+    from t_tree
+  </select>
+  <select id="query" resultType="cn.hd.model.Tree" parameterType="BaseConditionVO">
+    select
+    <include refid="Base_Column_List"/>
+    from t_tree
+    <where>
+      <if test="keywords!=null">
+        tree_no like "%"#{keywords}"%"
+        or
+        appr_no like  "%"#{keywords}"%"
+      </if>
+    </where>
+  </select>
 </mapper>

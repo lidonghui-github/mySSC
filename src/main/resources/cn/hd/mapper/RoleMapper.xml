@@ -1,84 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.hd.mapper.RoleMapper" >
-  <resultMap id="BaseResultMap" type="cn.hd.model.Role" >
-    <id column="role_id" property="roleId" jdbcType="VARCHAR" />
-    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="cn.hd.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="cn.hd.model.Role">
+        <id column="role_id" property="roleId" jdbcType="VARCHAR"/>
+        <result column="role_name" property="roleName" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     role_id as roleId, role_name as roleName, remark
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_role
-    where role_id = #{roleId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_role
+        where role_id = #{roleId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_role
     where role_id = #{roleId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="cn.hd.model.Role" >
+    <insert id="insert" parameterType="cn.hd.model.Role">
     insert into t_role (role_id, role_name, remark
       )
     values (#{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.hd.model.Role" >
-    insert into t_role
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="roleId != null" >
-        role_id,
-      </if>
-      <if test="roleName != null" >
-        role_name,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="roleId != null" >
-        #{roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="roleName != null" >
-        #{roleName,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.Role" >
-    update t_role
-    <set >
-      <if test="roleName != null" >
-        role_name = #{roleName,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where role_id = #{roleId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.hd.model.Role" >
+    <insert id="insertSelective" parameterType="cn.hd.model.Role">
+        insert into t_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                role_id,
+            </if>
+            <if test="roleName != null">
+                role_name,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleName != null">
+                #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.Role">
+        update t_role
+        <set>
+            <if test="roleName != null">
+                role_name = #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where role_id = #{roleId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.hd.model.Role">
     update t_role
     set role_name = #{roleName,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where role_id = #{roleId,jdbcType=VARCHAR}
   </update>
-  <select id="queryAll" resultType="cn.hd.model.Role">
-		select <include refid="Base_Column_List" /> from t_role
-	</select>
-	<select id="query" resultType="cn.hd.model.Role" parameterType="BaseConditionVO">
-		select
-		<include refid="Base_Column_List" />
-		from t_role
-		<where>
-			<if test="keywords!=null">
-				role_name like "%"#{keywords}"%"
-			</if>
-		</where>
-	</select>
+    <select id="queryAll" resultType="cn.hd.model.Role">
+        select
+        <include refid="Base_Column_List"/>
+        from t_role
+    </select>
+    <select id="query" resultType="cn.hd.model.Role" parameterType="BaseConditionVO">
+        select
+        <include refid="Base_Column_List"/>
+        from t_role
+        <where>
+            <if test="keywords!=null">
+                role_name like "%"#{keywords}"%"
+            </if>
+        </where>
+    </select>
 </mapper>
