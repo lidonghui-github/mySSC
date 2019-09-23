@@ -1,14 +1,12 @@
 package cn.hd.service.impl;
 
+import cn.hd.enums.CrdtStat;
 import cn.hd.enums.FrozStat;
 import cn.hd.mapper.TreeMapper;
 import cn.hd.model.BaseConditionVO;
 import cn.hd.model.Tree;
 import cn.hd.service.ITreeService;
-import cn.hd.utils.DateUtil;
-import cn.hd.utils.MyDateUtil;
-import cn.hd.utils.StringUtil;
-import cn.hd.utils.UUIDUtil;
+import cn.hd.utils.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -56,11 +54,27 @@ public class TreeServiceImpl implements ITreeService {
 
     @Override
     public int updateByPrimaryKey(Tree record) {
-        record.setUpdTime(DateUtil.getCurrentDateTime());
-        record.setVerNo(StringUtil.isNull(record.getVerNo()) ? 1 : record.getVerNo() + 1);
-        record.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(record.getUpdTime()));
-
-        return treeMapper.updateByPrimaryKey(record);
+        //1.先查出有没有该节点
+        Tree tree = treeMapper.selectByPrimaryKey(record.getId());
+        //2.如果存在就更新tree的相关值
+        tree.setApprAmt(record.getApprAmt());
+        tree.setUpdTime(DateUtil.getCurrentDateTime());
+        tree.setVerNo(StringUtil.isNull(tree.getVerNo()) ? 1 : tree.getVerNo() + 1);
+        tree.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(tree.getUpdTime()));
+        tree.setApprNo(record.getApprNo());
+        tree.setTreeNo(record.getTreeNo());
+        tree.setCrdtStat(record.getCrdtStat());
+        tree.setUpTreeNo(record.getUpTreeNo());
+        tree.setTreeName(record.getTreeName());
+        if (StringUtil.isNull(tree.getUsedAmt())) {
+            tree.setUsedAmt(0);
+        }
+        if (StringUtil.isNull(tree.getFrozAmt())) {
+            tree.setFrozAmt(0);
+        }
+        tree.setEnabAmt(tree.getApprAmt() - tree.getUsedAmt() - tree.getFrozAmt());
+        tree.setRemark(record.getRemark());
+        return treeMapper.updateByPrimaryKey(tree);
     }
 
     @Override
