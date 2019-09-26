@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-@Service
+@Service("treeService")
 public class TreeServiceImpl implements ITreeService {
     @Resource
     TreeMapper treeMapper;
