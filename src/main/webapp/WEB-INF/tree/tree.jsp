@@ -64,7 +64,7 @@
         </tr>
         <tr>
             <td class="tableleft">额度状态</td>
-            <td><input type="text" name="crdtStat" value="${tree.crdtStat}"/></td>
+            <td><input type="text" readonly="true" name="crdtStat" value="${tree.crdtStat}"/></td>
         </tr>
         <tr>
             <td class="tableleft">授信金额</td>
@@ -80,7 +80,7 @@
             <td class="tableleft"></td>
             <td>
                 <button type="submit" class="btn btn-primary">保存</button>
-                &nbsp;&nbsp;<button type="submit" class="btn btn-primary" name="backid" id="backid">返回列表</button>
+                &nbsp<button type="submit" class="btn btn-primary" name="backid" id="backid">返回列表</button>
             </td>
         </tr>
     </table>
