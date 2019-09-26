@@ -185,7 +185,7 @@
                 },{
                     id: '62',
                     text: '额度使用信息管理',
-                    href: 'tree/query'
+                    href: 'usage/query'
                 },{
                     id: '63',
                     text: '额度冻结信息管理',

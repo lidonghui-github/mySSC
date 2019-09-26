@@ -31,4 +31,9 @@ public interface ITreeService {
     int frozTree(Tree record);
 
     int tthawTree(Tree record);
+
+
+     int usageTree(Tree tree);
+
+    int recoveTree(Tree tree);
 }

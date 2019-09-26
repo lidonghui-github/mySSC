@@ -117,4 +117,27 @@ public class TreeServiceImpl implements ITreeService {
         tree.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(tree.getUpdTime()));
         return treeMapper.updateByPrimaryKey(tree);
     }
+
+
+    @Override
+    public int usageTree(Tree tree) {
+       tree.setUsedAmt(tree.getApprAmt());
+        tree.setEnabAmt(tree.getApprAmt() - tree.getUsedAmt() - tree.getFrozAmt());
+        tree.setVerNo(tree.getVerNo() + 1);
+        tree.setUpdTime(DateUtil.getCurrentDateTime());
+        tree.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(tree.getUpdTime()));
+        return treeMapper.updateByPrimaryKey(tree);
+
+    }
+
+    @Override
+    public int recoveTree(Tree tree) {
+        tree.setUsedAmt(0);
+        tree.setEnabAmt(tree.getApprAmt() - tree.getUsedAmt() - tree.getFrozAmt());
+        tree.setVerNo(tree.getVerNo() + 1);
+        tree.setUpdTime(DateUtil.getCurrentDateTime());
+        tree.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(tree.getUpdTime()));
+        return treeMapper.updateByPrimaryKey(tree);
+
+    }
 }
