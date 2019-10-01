@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hd.mapper.ContractMapper">
+    <resultMap id="BaseResultMap" type="cn.hd.model.Contract">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="cont_no" property="contNo" jdbcType="VARCHAR"/>
+        <result column="tree_no" property="treeNo" jdbcType="VARCHAR"/>
+        <result column="cont_amt" property="contAmt" jdbcType="INTEGER"/>
+        <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP"/>
+        <result column="crt_time_format" property="crtTimeFormat" jdbcType="VARCHAR"/>
+        <result column="upd_time" property="updTime" jdbcType="TIMESTAMP"/>
+        <result column="upd_time_format" property="updTimeFormat" jdbcType="VARCHAR"/>
+        <result column="begin_date" property="beginDate" jdbcType="DATE"/>
+        <result column="begin_date_format" property="beginDateFormat" jdbcType="VARCHAR"/>
+        <result column="end_data" property="endData" jdbcType="DATE"/>
+        <result column="end_date_format" property="endDateFormat" jdbcType="VARCHAR"/>
+        <result column="ver_no" property="verNo" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, cont_no as contNo, tree_no  as treeNo , cont_amt as contAmt, crt_time  as crtTime, crt_time_format  as  crtTimeFormat, upd_time  as  updTime, upd_time_format  as  updTimeFormat,
+    begin_date  as  beginDate, begin_date_format  as  beginDateFormat, end_data  as  endData, end_date_format  as  endDateFormat, ver_no  verNo, remark
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_contract
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_contract
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="cn.hd.model.Contract">
+    insert into t_contract (id, cont_no, tree_no, 
+      cont_amt, crt_time, crt_time_format, 
+      upd_time, upd_time_format, begin_date, 
+      begin_date_format, end_data, end_date_format, 
+      ver_no, remark)
+    values (#{id,jdbcType=VARCHAR}, #{contNo,jdbcType=VARCHAR}, #{treeNo,jdbcType=VARCHAR}, 
+      #{contAmt,jdbcType=INTEGER}, #{crtTime,jdbcType=TIMESTAMP}, #{crtTimeFormat,jdbcType=VARCHAR}, 
+      #{updTime,jdbcType=TIMESTAMP}, #{updTimeFormat,jdbcType=VARCHAR}, #{beginDate,jdbcType=DATE}, 
+      #{beginDateFormat,jdbcType=VARCHAR}, #{endData,jdbcType=DATE}, #{endDateFormat,jdbcType=VARCHAR}, 
+      #{verNo,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="cn.hd.model.Contract">
+        insert into t_contract
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="contNo != null">
+                cont_no,
+            </if>
+            <if test="treeNo != null">
+                tree_no,
+            </if>
+            <if test="contAmt != null">
+                cont_amt,
+            </if>
+            <if test="crtTime != null">
+                crt_time,
+            </if>
+            <if test="crtTimeFormat != null">
+                crt_time_format,
+            </if>
+            <if test="updTime != null">
+                upd_time,
+            </if>
+            <if test="updTimeFormat != null">
+                upd_time_format,
+            </if>
+            <if test="beginDate != null">
+                begin_date,
+            </if>
+            <if test="beginDateFormat != null">
+                begin_date_format,
+            </if>
+            <if test="endData != null">
+                end_data,
+            </if>
+            <if test="endDateFormat != null">
+                end_date_format,
+            </if>
+            <if test="verNo != null">
+                ver_no,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="contNo != null">
+                #{contNo,jdbcType=VARCHAR},
+            </if>
+            <if test="treeNo != null">
+                #{treeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="contAmt != null">
+                #{contAmt,jdbcType=INTEGER},
+            </if>
+            <if test="crtTime != null">
+                #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtTimeFormat != null">
+                #{crtTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="updTime != null">
+                #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updTimeFormat != null">
+                #{updTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="beginDate != null">
+                #{beginDate,jdbcType=DATE},
+            </if>
+            <if test="beginDateFormat != null">
+                #{beginDateFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="endData != null">
+                #{endData,jdbcType=DATE},
+            </if>
+            <if test="endDateFormat != null">
+                #{endDateFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="verNo != null">
+                #{verNo,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.Contract">
+        update t_contract
+        <set>
+            <if test="contNo != null">
+                cont_no = #{contNo,jdbcType=VARCHAR},
+            </if>
+            <if test="treeNo != null">
+                tree_no = #{treeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="contAmt != null">
+                cont_amt = #{contAmt,jdbcType=INTEGER},
+            </if>
+            <if test="crtTime != null">
+                crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtTimeFormat != null">
+                crt_time_format = #{crtTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="updTime != null">
+                upd_time = #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updTimeFormat != null">
+                upd_time_format = #{updTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="beginDate != null">
+                begin_date = #{beginDate,jdbcType=DATE},
+            </if>
+            <if test="beginDateFormat != null">
+                begin_date_format = #{beginDateFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="endData != null">
+                end_data = #{endData,jdbcType=DATE},
+            </if>
+            <if test="endDateFormat != null">
+                end_date_format = #{endDateFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="verNo != null">
+                ver_no = #{verNo,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.hd.model.Contract">
+    update t_contract
+    set cont_no = #{contNo,jdbcType=VARCHAR},
+      tree_no = #{treeNo,jdbcType=VARCHAR},
+      cont_amt = #{contAmt,jdbcType=INTEGER},
+      crt_time = #{crtTime,jdbcType=TIMESTAMP},
+      crt_time_format = #{crtTimeFormat,jdbcType=VARCHAR},
+      upd_time = #{updTime,jdbcType=TIMESTAMP},
+      upd_time_format = #{updTimeFormat,jdbcType=VARCHAR},
+      begin_date = #{beginDate,jdbcType=DATE},
+      begin_date_format = #{beginDateFormat,jdbcType=VARCHAR},
+      end_data = #{endData,jdbcType=DATE},
+      end_date_format = #{endDateFormat,jdbcType=VARCHAR},
+      ver_no = #{verNo,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+    <select id="queryAll" resultType="cn.hd.model.Contract">
+        select
+        <include refid="Base_Column_List"/>
+        from t_contract
+    </select>
+    <select id="query" resultType="cn.hd.model.Contract" parameterType="BaseConditionVO">
+        select
+        <include refid="Base_Column_List"/>
+        from t_contract
+        <where>
+            <if test="keywords!=null">
+                cont_no like "%"#{keywords}"%"
+                or
+                tree_no like "%"#{keywords}"%"
+            </if>
+        </where>
+    </select>
+</mapper>

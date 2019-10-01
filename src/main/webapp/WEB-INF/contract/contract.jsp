@@ -43,32 +43,40 @@
     </style>
 </head>
 <body>
-<form action="tree/save" method="post" class="definewidth m20">
+<form action="contract/save" method="post" class="definewidth m20">
     <table class="table table-bordered table-hover definewidth m10">
-        <input type="hidden" name="id" value="${tree.id }"/>
+        <input type="hidden" name="id" value="${contract.id}"/>
+        <tr>
+            <td width="10%" class="tableleft">合同编号</td>
+            <td><input type="text" name="contNo" value="${contract.contNo}"/></td>
+        </tr>
         <tr>
             <td width="10%" class="tableleft">节点编号</td>
-            <td><input type="text" name="treeNo" value="${tree.treeNo}"/></td>
+            <td><input type="text" name="treeNo" value="${contract.treeNo}"/></td>
         </tr>
         <tr>
-            <td class="tableleft">节点名称</td>
-            <td><input type="text" name="treeName" value="${tree.treeName}"/></td>
+            <td width="10%" class="tableleft">合同金额</td>
+            <td><input type="Integer" name="contAmt" value="${contract.contAmt}"/></td>
         </tr>
         <tr>
-            <td class="tableleft">上级节点编号</td>
-            <td><input type="text" name="upTreeNo" value="${tree.upTreeNo }"/></td>
+            <td width="10%" class="tableleft">创建时间</td>
+            <td><input type="text" name="crtTimeFormat" value="${contract.crtTimeFormat}"/></td>
         </tr>
         <tr>
-            <td class="tableleft">批复号</td>
-            <td><input type="text" name="apprNo" value="${tree.apprNo }"/></td>
+            <td width="10%" class="tableleft">更新时间</td>
+            <td><input type="text" name="updTimeFormat" value="${contract.updTimeFormat}"/></td>
         </tr>
         <tr>
-            <td class="tableleft">额度状态</td>
-            <td><input type="text" readonly="true" name="crdtStat" value="${tree.crdtStat}"/></td>
+            <td width="10%" class="tableleft">合同起始日</td>
+            <td><input type="text" name="beginDateFormat" value="${contract.beginDateFormat}"/></td>
         </tr>
         <tr>
-            <td class="tableleft">授信金额</td>
-            <td><input type="Integer" name="apprAmt" value="${tree.apprAmt}"/></td>
+            <td width="10%" class="tableleft">合同到期日</td>
+            <td><input type="text" name="endDateFormat" value="${contract.endDateFormat}"/></td>
+        </tr>
+        <tr>
+            <td width="10%" class="tableleft">版本号</td>
+            <td><input type="Integer" name="endDateFormat" value="${contract.verNo}"/></td>
         </tr>
         <tr>
             <td class="tableleft">备注</td>
@@ -80,13 +88,11 @@
             <td class="tableleft"></td>
             <td>
                 <button type="submit" name="saveid" id="saveid" class="btn btn-primary">保存</button>
-                <%--<button type="submit" class="btn btn-primary" name="backid" id="backid">返回列表</button>--%>
-
             </td>
         </tr>
     </table>
 </form>
-<form class="form-inline definewidth m20" action="tree/query"
+<form class="form-inline definewidth m20" action="contract/query"
       method="post">
 
     <tr>

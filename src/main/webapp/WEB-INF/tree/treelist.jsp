@@ -54,7 +54,7 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-       <%-- <th colspan="1" height="10px">节点id号</th>--%>
+        <%-- <th colspan="1" height="10px">节点id号</th>--%>
         <th colspan="1" height="10px">节点号</th>
         <th colspan="1" height="10px">节点名称</th>
         <th colspan="1" height="10px">上级节点号</th>
@@ -76,7 +76,7 @@
     </thead>
     <c:forEach items="${pageModel.list}" var="tree">
         <tr>
-           <%-- <td>${tree.id}</td>--%>
+                <%-- <td>${tree.id}</td>--%>
             <td>${tree.treeNo}</td>
             <td>${tree.treeName }</td>
             <td>${tree.upTreeNo }</td>
@@ -95,8 +95,10 @@
             <td><a href="tree/updatePage/${tree.id }">编辑</a>
                 <a id="delete" href="tree/delete/${tree.id }">删除</a>
             </td>
-            <td><a id="froz" href="froz/frozPage/${tree.treeNo}">冻结</a>
-                <a id="tthaw" href="froz/tthawPage/${tree.treeNo}">解冻</a>
+
+            <td>
+                <a id="froz" class="btn btn-success" href="froz/frozPage/${tree.treeNo}">冻结</a>
+                <a id="tthaw"  class="btn btn-primary" href="froz/tthawPage/${tree.treeNo}">解冻</a>
             </td>
         </tr>
     </c:forEach>
@@ -114,20 +116,18 @@
 <script>
     $(function () {
 
-
         $('#addnew').click(function () {
-
             window.location.href = "<%=path%>/tree/init";
         });
         $('#delete').click(function () {
             if (confirm("确定要删除吗？")) {
-
                 var url = "<%=path%>/tree/query";
-
                 window.location.href = url;
-
             }
         });
+
+    });
+    $(function () {
         $('#froz').click(function () {
                 if (confirm("确定冻结吗？")) {
                     var url = "<%=path%>/tree/query";
@@ -135,6 +135,9 @@
                 }
             }
         );
+
+    });
+    $(function () {
         $('#tthaw').click(function () {
                 if (confirm("确定解冻吗？")) {
                     var url = "<%=path%>/tree/query";
@@ -142,8 +145,6 @@
                 }
             }
         );
-
-
     });
 
 

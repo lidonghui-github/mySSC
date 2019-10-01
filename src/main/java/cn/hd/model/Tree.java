@@ -1,8 +1,9 @@
 package cn.hd.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Tree {
+public class Tree implements Serializable {
     private String id;
 
     private String treeName;
@@ -171,5 +172,29 @@ public class Tree {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+
+    @Override
+    public String toString() {
+        return "Tree{" +
+                "id='" + id + '\'' +
+                ", treeName='" + treeName + '\'' +
+                ", treeNo='" + treeNo + '\'' +
+                ", upTreeNo='" + upTreeNo + '\'' +
+                ", apprNo='" + apprNo + '\'' +
+                ", frozStat='" + frozStat + '\'' +
+                ", crdtStat='" + crdtStat + '\'' +
+                ", apprAmt=" + apprAmt +
+                ", usedAmt=" + usedAmt +
+                ", enabAmt=" + enabAmt +
+                ", frozAmt=" + frozAmt +
+                ", crtTime=" + crtTime +
+                ", crtTimeFormat='" + crtTimeFormat + '\'' +
+                ", updTime=" + updTime +
+                ", updTimeFormat='" + updTimeFormat + '\'' +
+                ", verNo=" + verNo +
+                ", remark='" + remark + '\'' +
+                '}';
     }
 }
