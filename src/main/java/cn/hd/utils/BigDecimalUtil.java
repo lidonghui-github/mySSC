@@ -79,6 +79,7 @@ public class BigDecimalUtil {
 
     /**
      * 比较金额的大小，当金额为null时，将金额设置为0.00，防止空指针的发生
+     *
      * @param a1
      * @param a2
      * @return
@@ -91,5 +92,13 @@ public class BigDecimalUtil {
             a2 = new BigDecimal(0.00);
         }
         return a1.compareTo(a2) > 0;
+    }
+
+    public static Integer add(Integer a1, Integer a2) {
+        return a1.intValue() + a2.intValue();
+    }
+
+    public static Integer subtract1(Integer a1, Integer a2) {
+        return a1.intValue()-a2.intValue();
     }
 }

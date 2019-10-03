@@ -1,5 +1,6 @@
 package cn.hd.service.impl;
 
+import cn.hd.buss.TreeContractUtil;
 import cn.hd.mapper.ContractMapper;
 import cn.hd.model.BaseConditionVO;
 import cn.hd.model.Contract;
@@ -35,7 +36,11 @@ public class ContractServiceImpl implements IContractService {
 
     @Override
     public int insert(Contract record) {
+        //初始化合同节点信息
         initSaveContract(record);
+        //更新节点金额信息
+        treeContractUtil.updateTreeWithInitContract(record);
+        //保存合同节点信息
         return contractMapper.insert(record);
     }
 
@@ -92,6 +97,7 @@ public class ContractServiceImpl implements IContractService {
 
     //更新合同节点信息
     public Contract updateContract(Contract record) {
+        treeContractUtil.updateTreeWithUpdateContract(record);
         Contract contract = contractMapper.selectByPrimaryKey(record.getId());
         contract.setUpdTime(DateUtil.getCurrentDateTime());
         contract.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(contract.getUpdTime()));
@@ -117,4 +123,8 @@ public class ContractServiceImpl implements IContractService {
         }
         return contract;
     }
+
+
+    @Resource
+    TreeContractUtil treeContractUtil;
 }
