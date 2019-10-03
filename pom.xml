@@ -5,7 +5,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hd.mySSC</groupId>
 	<artifactId>mySSC</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>war</packaging>
 	<name>mySSC</name>
 	<description />
