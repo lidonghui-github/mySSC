@@ -38,7 +38,7 @@ public class MyDateUtil {
 		return sdf.format(date);
 	}
 
-	public static Date dateFrom_YYYY_MM_DD(String sorce)
+	public static Date parseDateFrom_YYYY_MM_DD(String sorce)
 			throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat(sorce);
 

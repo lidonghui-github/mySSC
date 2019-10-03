@@ -19,7 +19,7 @@
     </resultMap>
     <sql id="Base_Column_List">
     id, cont_no as contNo, tree_no  as treeNo , cont_amt as contAmt, crt_time  as crtTime, crt_time_format  as  crtTimeFormat, upd_time  as  updTime, upd_time_format  as  updTimeFormat,
-    begin_date  as  beginDate, begin_date_format  as  beginDateFormat, end_data  as  endData, end_date_format  as  endDateFormat, ver_no  verNo, remark
+    begin_date  as  beginDate, begin_date_format  as  beginDateFormat, end_data  as  endData, end_date_format  as  endDateFormat, ver_no as verNo, remark
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
@@ -204,6 +204,7 @@
     <select id="query" resultType="cn.hd.model.Contract" parameterType="BaseConditionVO">
         select
         <include refid="Base_Column_List"/>
+
         from t_contract
         <where>
             <if test="keywords!=null">

@@ -25,9 +25,9 @@
     <div class="dl-title">
         <!--<img src="/chinapost/Public/assets/img/top.png">-->
     </div>
-
+    ${user.username}
     <div class="dl-log">
-        欢迎您，<span class="dl-log-user">${user.username}</span><a href="<%=basePath%>/login/login" title="退出系统" class="dl-log-quit">[退出]</a>
+        欢迎您，<span class="dl-log-user"></span><a href="<%=basePath%>/login/login" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
 </div>
 <div class="content">
@@ -66,6 +66,11 @@
             <li class="nav-item dl-selected">
                 <div
                         class="nav-item-inner nav-home">额度管理
+                </div>
+            </li>
+            <li class="nav-item dl-selected">
+                <div
+                        class="nav-item-inner nav-home">合同占用模块
                 </div>
             </li>
         </ul>
@@ -194,6 +199,16 @@
                     id: '64',
                     text: '额度解冻信息管理',
                     href: 'tree/query'
+                }]
+            }]
+        },{
+            id: '7',
+            menu: [{
+                text: '合同占用模块',
+                items: [{
+                    id: '71',
+                    text: '合同占用信息管理',
+                    href: 'contract/query'
                 }]
             }]
         }];

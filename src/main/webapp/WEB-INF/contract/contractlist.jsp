@@ -76,10 +76,10 @@
             <td>${contract.contAmt}</td>
             <td>${contract.crtTimeFormat }</td>
             <td>${contract.updTimeFormat }</td>
-            <td>${tcontract.beginDateFormat}</td>
+            <td>${contract.beginDateFormat}</td>
             <td>${contract.endDateFormat}</td>
-            <td>${tree.verNo }</td>
-            <td>${tree.remark }</td>
+            <td>${contract.verNo }</td>
+            <td>${contract.remark }</td>
             <td><a href="contract/updatePage/${contract.id}">编辑</a>
                 <a id="delete" href="contract/delete/${contract.id}">删除</a>
             </td>

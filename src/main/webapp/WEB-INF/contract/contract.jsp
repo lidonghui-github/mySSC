@@ -76,11 +76,11 @@
         </tr>
         <tr>
             <td width="10%" class="tableleft">版本号</td>
-            <td><input type="Integer" name="endDateFormat" value="${contract.verNo}"/></td>
+            <td><input type="Integer" name="verNo" value="${contract.verNo}"/></td>
         </tr>
         <tr>
             <td class="tableleft">备注</td>
-            <td><input type="text" name="remark" value="${tree.remark}"/></td>
+            <td><input type="text" name="remark" value="${contract.remark}"/></td>
         </tr>
 
 
