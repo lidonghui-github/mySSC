@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hd.mapper.ContractInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.hd.model.ContractInfo">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="cont_no" property="contNo" jdbcType="VARCHAR"/>
+        <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP"/>
+        <result column="crt_time_format" property="crtTimeFormat" jdbcType="VARCHAR"/>
+        <result column="upd_time" property="updTime" jdbcType="TIMESTAMP"/>
+        <result column="upd_time_format" property="updTimeFormat" jdbcType="VARCHAR"/>
+        <result column="cont_stat" property="contStat" jdbcType="VARCHAR"/>
+        <result column="ver_no" property="verNo" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, cont_no   as  contNo, crt_time  as  crtTime , crt_time_format  as crtTimeFormat, upd_time as updTime, upd_time_format as updTimeFormat, cont_stat  as contStat, ver_no as verNo,
+    remark
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_contract_info
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_contract_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="cn.hd.model.ContractInfo">
+    insert into t_contract_info (id, cont_no, crt_time, 
+      crt_time_format, upd_time, upd_time_format, 
+      cont_stat, ver_no, remark
+      )
+    values (#{id,jdbcType=VARCHAR}, #{contNo,jdbcType=VARCHAR}, #{crtTime,jdbcType=TIMESTAMP}, 
+      #{crtTimeFormat,jdbcType=VARCHAR}, #{updTime,jdbcType=TIMESTAMP}, #{updTimeFormat,jdbcType=VARCHAR}, 
+      #{contStat,jdbcType=VARCHAR}, #{verNo,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="cn.hd.model.ContractInfo">
+        insert into t_contract_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="contNo != null">
+                cont_no,
+            </if>
+            <if test="crtTime != null">
+                crt_time,
+            </if>
+            <if test="crtTimeFormat != null">
+                crt_time_format,
+            </if>
+            <if test="updTime != null">
+                upd_time,
+            </if>
+            <if test="updTimeFormat != null">
+                upd_time_format,
+            </if>
+            <if test="contStat != null">
+                cont_stat,
+            </if>
+            <if test="verNo != null">
+                ver_no,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="contNo != null">
+                #{contNo,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null">
+                #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtTimeFormat != null">
+                #{crtTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="updTime != null">
+                #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updTimeFormat != null">
+                #{updTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="contStat != null">
+                #{contStat,jdbcType=VARCHAR},
+            </if>
+            <if test="verNo != null">
+                #{verNo,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.ContractInfo">
+        update t_contract_info
+        <set>
+            <if test="contNo != null">
+                cont_no = #{contNo,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null">
+                crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtTimeFormat != null">
+                crt_time_format = #{crtTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="updTime != null">
+                upd_time = #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updTimeFormat != null">
+                upd_time_format = #{updTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="contStat != null">
+                cont_stat = #{contStat,jdbcType=VARCHAR},
+            </if>
+            <if test="verNo != null">
+                ver_no = #{verNo,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.hd.model.ContractInfo">
+    update t_contract_info
+    set cont_no = #{contNo,jdbcType=VARCHAR},
+      crt_time = #{crtTime,jdbcType=TIMESTAMP},
+      crt_time_format = #{crtTimeFormat,jdbcType=VARCHAR},
+      upd_time = #{updTime,jdbcType=TIMESTAMP},
+      upd_time_format = #{updTimeFormat,jdbcType=VARCHAR},
+      cont_stat = #{contStat,jdbcType=VARCHAR},
+      ver_no = #{verNo,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+    <select id="queryAll" resultType="cn.hd.model.ContractInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from t_contract_info
+    </select>
+    <select id="query" resultType="cn.hd.model.ContractInfo" parameterType="BaseConditionVO">
+        select
+        <include refid="Base_Column_List"/>
+
+        from t_contract_info
+        <where>
+            <if test="keywords!=null">
+                cont_no like "%"#{keywords}"%"
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -70,7 +70,7 @@
             </li>
             <li class="nav-item dl-selected">
                 <div
-                        class="nav-item-inner nav-home">合同占用模块
+                        class="nav-item-inner nav-home">合同模块
                 </div>
             </li>
         </ul>
@@ -90,46 +90,46 @@
             menu: [{
                 text: '系统管理',
                 items: [{
-                    id: '11',
+                    id: '1-1-1',
                     text: '部门管理',
                     href: 'dept/query'
                 }, {
-                    id: '12',
+                    id: '1-1-2',
                     text: '角色管理',
                     href: 'role/query'
                 }, {
-                    id: '13',
+                    id: '1-1-3',
                     text: '用户管理',
                     href: 'user/query'
                 }, {
-                    id: '14',
+                    id: '1-1-4',
                     text: '菜单管理',
                     href: 'menu/query'
                 }, {
-                    id: '15',
+                    id: '1-1-5',
                     text: '数据字典管理',
                     href: 'data/query'
                 }]
             },{
                 text: '系统管理2',
                 items: [{
-                    id: '11',
+                    id: '1-2-1',
                     text: '部门管理',
                     href: 'dept/query'
                 }, {
-                    id: '12',
+                    id: '1-2-2',
                     text: '角色管理',
                     href: 'role/query'
                 }, {
-                    id: '13',
+                    id: '1-2-3',
                     text: '用户管理',
                     href: 'user/query'
                 }, {
-                    id: '14',
+                    id: '1-2-4',
                     text: '菜单管理',
                     href: 'menu/query'
                 }, {
-                    id: '15',
+                    id: '1-2-5',
                     text: '数据字典管理',
                     href: 'data/query'
                 }]
@@ -139,15 +139,15 @@
             menu: [{
                 text: '司机管理模块',
                 items: [{
-                    id: '21',
+                    id: '2-1-1',
                     text: '司机信息管理',
                     href: 'driver/query'
                 }, {
-                    id: '22',
+                    id: '2-1-2',
                     text: '司机当前订单管理',
                     href: 'asset/query'
                 }, {
-                    id: '23',
+                    id: '2-1-3',
                     text: '司机历史订单管理',
                     href: 'asset/query'
                 }]
@@ -157,15 +157,15 @@
             menu: [{
                 text: '客户管理模块',
                 items: [{
-                    id: '31',
+                    id: '3-1-1',
                     text: '客户信息管理',
                     href: 'checkedout/query'
                 }, {
-                    id: '32',
+                    id: '3-1-2',
                     text: '客户当前订单管理',
                     href: 'checkedout/query'
                 }, {
-                    id: '33',
+                    id: '3-1-3',
                     text: '客户历史订单管理',
                     href: 'checkedout/query'
                 }]
@@ -175,19 +175,19 @@
             menu: [{
                 text: '订单管理模块',
                 items: [{
-                    id: '41',
+                    id: '4-1-1',
                     text: '订单信息管理',
                     href: 'order/query'
                 }, {
-                    id: '42',
+                    id: '4-1-2',
                     text: '未完成订单管理',
                     href: 'checkedout/query'
                 }, {
-                    id: '43',
+                    id: '4-1-3',
                     text: '已完成订单管理',
                     href: 'checkedout/query'
                 }, {
-                    id: '44',
+                    id: '4-1-4',
                     text: '失效订单管理',
                     href: 'checkedout/query'
                 }]
@@ -197,7 +197,7 @@
             menu: [{
                 text: '登录模块',
                 items: [{
-                    id: '51',
+                    id: '5-1-1',
                     text: '登录信息管理',
                     href: 'login/query'
                 }]
@@ -207,19 +207,19 @@
             menu: [{
                 text: '额度模块',
                 items: [{
-                    id: '61',
+                    id: '6-1-1',
                     text: '额度信息管理',
                     href: 'tree/query'
                 },{
-                    id: '62',
+                    id: '6-1-2',
                     text: '额度使用信息管理',
                     href: 'usage/query'
                 },{
-                    id: '63',
+                    id: '6-1-3',
                     text: '额度冻结信息管理',
                     href: 'tree/query'
                 },{
-                    id: '64',
+                    id: '6-1-4',
                     text: '额度解冻信息管理',
                     href: 'tree/query'
                 }]
@@ -229,9 +229,16 @@
             menu: [{
                 text: '合同占用模块',
                 items: [{
-                    id: '71',
+                    id: '7-1-1',
                     text: '合同占用信息管理',
                     href: 'contract/query'
+                }]
+            },{
+                text: '合同信息模块',
+                items: [{
+                    id: '7-2-1',
+                    text: '合同信息管理',
+                    href: 'contractinfo/query'
                 }]
             }]
         }];
