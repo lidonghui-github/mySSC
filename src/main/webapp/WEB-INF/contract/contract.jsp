@@ -87,7 +87,7 @@
         <tr>
             <td class="tableleft"></td>
             <td>
-                <button type="submit" name="saveid" id="saveid" class="btn btn-primary">保存</button>
+                <button type="submit" class="btn btn-success" name="saveid" id="saveid" class="btn btn-primary">保存</button>
             </td>
         </tr>
     </table>
