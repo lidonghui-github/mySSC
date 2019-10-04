@@ -223,6 +223,25 @@
                     text: '额度解冻信息管理',
                     href: 'tree/query'
                 }]
+            },{
+                text: '额度关系模块',
+                items: [{
+                    id: '6-2-1',
+                    text: '额度关系管理',
+                    href: 'tree/query'
+                },{
+                    id: '6-2-2',
+                    text: '额度纳入关系管理',
+                    href: 'tree/query'
+                },{
+                    id: '6-2-3',
+                    text: '额度替换关系管理',
+                    href: 'usage/query'
+                },{
+                    id: '6-2-4',
+                    text: '额度关联关系管理',
+                    href: 'tree/query'
+                }]
             }]
         },{
             id: '7',
