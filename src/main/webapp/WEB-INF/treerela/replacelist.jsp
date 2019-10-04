@@ -42,14 +42,12 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="treerela/query"
+<form class="form-inline definewidth m20" action="treerela/replacequery"
       method="post">
     关键字： <input type="text" name="keywords" id="keywords"
-                class="abc input-default" placeholder="请输入纳入额度编号或者被纳入编号或者关系类型"
+                class="abc input-default" placeholder="请输入纳入额度编号或者被纳入编号"
                 value="${vo.keywords }">&nbsp;&nbsp;
     <button type="submit" class="btn btn-primary">查询</button>
-    &nbsp;&nbsp;
-    <button type="button" class="btn btn-success" id="addnew">新建额度关系</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
@@ -63,7 +61,7 @@
         <th colspan="1" height="10px">更新时间</th>
         <th colspan="1" height="10px">版本号</th>
         <th colspan="1" height="10px">备注</th>
-        <th colspan="1" height="10px">操作</th>      
+
 
     </tr>
     </thead>
@@ -78,14 +76,10 @@
             <td>${treerela.updTimeFromat }</td>
             <td>${treerela.verNo }</td>
             <td>${treerela.remark }</td>
-
-            <td><a href="treerela/updatePage/${treerela.id }">编辑</a>
-                <a id="delete" href="treerela/delete/${treerela.id }">删除</a>
-            </td>
         </tr>
     </c:forEach>
 </table>
-<form action="treerela/query" id="pager" name="pager" method="post">
+<form action="treerela/replacequery" id="pager" name="pager" method="post">
     <input type="hidden" name="pageNum" id="pageNum"
            value="${pageModel.pageNum}"> <input type="hidden"
                                                 name="pageSize" id="pageSize" value="${pageModel.pageSize}">
@@ -95,20 +89,4 @@
 </div>
 </body>
 </html>
-<script>
-    $(function () {
 
-        $('#addnew').click(function () {
-            window.location.href = "<%=path%>/treerela/init";
-        });
-        $('#delete').click(function () {
-            if (confirm("确定要删除吗？")) {
-                var url = "<%=path%>/treerela/query";
-                window.location.href = url;
-            }
-        });
-
-    });
-
-
-</script>

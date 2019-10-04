@@ -22,4 +22,10 @@ public interface ITreeRelaService {
 	int updateByPrimaryKey(TreeRela record);
 	PageInfo<TreeRela> query(BaseConditionVO vo);
 
+	PageInfo<TreeRela> naruquery(BaseConditionVO vo);
+
+	PageInfo<TreeRela> replacequery(BaseConditionVO vo);
+
+	PageInfo<TreeRela> glquery(BaseConditionVO vo);
+
 }

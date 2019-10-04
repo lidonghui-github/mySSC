@@ -22,4 +22,8 @@ public interface TreeRelaMapper {
 
     List<TreeRela> queryAll();
     List<TreeRela> query(BaseConditionVO vo);
+    List<TreeRela> naruquery(BaseConditionVO vo);
+    List<TreeRela> replacequery(BaseConditionVO vo);
+
+    List<TreeRela> glquery(BaseConditionVO vo);
 }

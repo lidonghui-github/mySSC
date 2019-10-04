@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.hd.mapper.TreeRelaMapper" >
-  <resultMap id="BaseResultMap" type="cn.hd.model.TreeRela" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="big_tree_no" property="bigTreeNo" jdbcType="VARCHAR" />
-    <result column="small_tree_no" property="smallTreeNo" jdbcType="VARCHAR" />
-    <result column="rela_type" property="relaType" jdbcType="VARCHAR" />
-    <result column="valid_flag" property="validFlag" jdbcType="VARCHAR" />
-    <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
-    <result column="crt_time_format" property="crtTimeFormat" jdbcType="VARCHAR" />
-    <result column="upd_time" property="updTime" jdbcType="TIMESTAMP" />
-    <result column="upd_time_fromat" property="updTimeFromat" jdbcType="VARCHAR" />
-    <result column="ver_no" property="verNo" jdbcType="INTEGER" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, big_tree_no, small_tree_no, rela_type, valid_flag, crt_time, crt_time_format, 
-    upd_time, upd_time_fromat, ver_no, remark
+<mapper namespace="cn.hd.mapper.TreeRelaMapper">
+    <resultMap id="BaseResultMap" type="cn.hd.model.TreeRela">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="big_tree_no" property="bigTreeNo" jdbcType="VARCHAR"/>
+        <result column="small_tree_no" property="smallTreeNo" jdbcType="VARCHAR"/>
+        <result column="rela_type" property="relaType" jdbcType="VARCHAR"/>
+        <result column="valid_flag" property="validFlag" jdbcType="VARCHAR"/>
+        <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP"/>
+        <result column="crt_time_format" property="crtTimeFormat" jdbcType="VARCHAR"/>
+        <result column="upd_time" property="updTime" jdbcType="TIMESTAMP"/>
+        <result column="upd_time_fromat" property="updTimeFromat" jdbcType="VARCHAR"/>
+        <result column="ver_no" property="verNo" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, big_tree_no as bigTreeNo, small_tree_no as smallTreeNo, rela_type as relaType, valid_flag as validFlag, crt_time as crtTime, crt_time_format as crtTimeFormat,
+    upd_time  as  updTime, upd_time_fromat  as  updTimeFromat, ver_no  as  verNo, remark
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_tree_rela
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_tree_rela
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_tree_rela
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="cn.hd.model.TreeRela" >
+    <insert id="insert" parameterType="cn.hd.model.TreeRela">
     insert into t_tree_rela (id, big_tree_no, small_tree_no, 
       rela_type, valid_flag, crt_time, 
       crt_time_format, upd_time, upd_time_fromat, 
@@ -38,116 +38,116 @@
       #{crtTimeFormat,jdbcType=VARCHAR}, #{updTime,jdbcType=TIMESTAMP}, #{updTimeFromat,jdbcType=VARCHAR}, 
       #{verNo,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.hd.model.TreeRela" >
-    insert into t_tree_rela
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="bigTreeNo != null" >
-        big_tree_no,
-      </if>
-      <if test="smallTreeNo != null" >
-        small_tree_no,
-      </if>
-      <if test="relaType != null" >
-        rela_type,
-      </if>
-      <if test="validFlag != null" >
-        valid_flag,
-      </if>
-      <if test="crtTime != null" >
-        crt_time,
-      </if>
-      <if test="crtTimeFormat != null" >
-        crt_time_format,
-      </if>
-      <if test="updTime != null" >
-        upd_time,
-      </if>
-      <if test="updTimeFromat != null" >
-        upd_time_fromat,
-      </if>
-      <if test="verNo != null" >
-        ver_no,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="bigTreeNo != null" >
-        #{bigTreeNo,jdbcType=VARCHAR},
-      </if>
-      <if test="smallTreeNo != null" >
-        #{smallTreeNo,jdbcType=VARCHAR},
-      </if>
-      <if test="relaType != null" >
-        #{relaType,jdbcType=VARCHAR},
-      </if>
-      <if test="validFlag != null" >
-        #{validFlag,jdbcType=VARCHAR},
-      </if>
-      <if test="crtTime != null" >
-        #{crtTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="crtTimeFormat != null" >
-        #{crtTimeFormat,jdbcType=VARCHAR},
-      </if>
-      <if test="updTime != null" >
-        #{updTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updTimeFromat != null" >
-        #{updTimeFromat,jdbcType=VARCHAR},
-      </if>
-      <if test="verNo != null" >
-        #{verNo,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.TreeRela" >
-    update t_tree_rela
-    <set >
-      <if test="bigTreeNo != null" >
-        big_tree_no = #{bigTreeNo,jdbcType=VARCHAR},
-      </if>
-      <if test="smallTreeNo != null" >
-        small_tree_no = #{smallTreeNo,jdbcType=VARCHAR},
-      </if>
-      <if test="relaType != null" >
-        rela_type = #{relaType,jdbcType=VARCHAR},
-      </if>
-      <if test="validFlag != null" >
-        valid_flag = #{validFlag,jdbcType=VARCHAR},
-      </if>
-      <if test="crtTime != null" >
-        crt_time = #{crtTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="crtTimeFormat != null" >
-        crt_time_format = #{crtTimeFormat,jdbcType=VARCHAR},
-      </if>
-      <if test="updTime != null" >
-        upd_time = #{updTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updTimeFromat != null" >
-        upd_time_fromat = #{updTimeFromat,jdbcType=VARCHAR},
-      </if>
-      <if test="verNo != null" >
-        ver_no = #{verNo,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.hd.model.TreeRela" >
+    <insert id="insertSelective" parameterType="cn.hd.model.TreeRela">
+        insert into t_tree_rela
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="bigTreeNo != null">
+                big_tree_no,
+            </if>
+            <if test="smallTreeNo != null">
+                small_tree_no,
+            </if>
+            <if test="relaType != null">
+                rela_type,
+            </if>
+            <if test="validFlag != null">
+                valid_flag,
+            </if>
+            <if test="crtTime != null">
+                crt_time,
+            </if>
+            <if test="crtTimeFormat != null">
+                crt_time_format,
+            </if>
+            <if test="updTime != null">
+                upd_time,
+            </if>
+            <if test="updTimeFromat != null">
+                upd_time_fromat,
+            </if>
+            <if test="verNo != null">
+                ver_no,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="bigTreeNo != null">
+                #{bigTreeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="smallTreeNo != null">
+                #{smallTreeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="relaType != null">
+                #{relaType,jdbcType=VARCHAR},
+            </if>
+            <if test="validFlag != null">
+                #{validFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null">
+                #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtTimeFormat != null">
+                #{crtTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="updTime != null">
+                #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updTimeFromat != null">
+                #{updTimeFromat,jdbcType=VARCHAR},
+            </if>
+            <if test="verNo != null">
+                #{verNo,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.TreeRela">
+        update t_tree_rela
+        <set>
+            <if test="bigTreeNo != null">
+                big_tree_no = #{bigTreeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="smallTreeNo != null">
+                small_tree_no = #{smallTreeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="relaType != null">
+                rela_type = #{relaType,jdbcType=VARCHAR},
+            </if>
+            <if test="validFlag != null">
+                valid_flag = #{validFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null">
+                crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtTimeFormat != null">
+                crt_time_format = #{crtTimeFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="updTime != null">
+                upd_time = #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updTimeFromat != null">
+                upd_time_fromat = #{updTimeFromat,jdbcType=VARCHAR},
+            </if>
+            <if test="verNo != null">
+                ver_no = #{verNo,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.hd.model.TreeRela">
     update t_tree_rela
     set big_tree_no = #{bigTreeNo,jdbcType=VARCHAR},
       small_tree_no = #{smallTreeNo,jdbcType=VARCHAR},
@@ -162,24 +162,55 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
-  <select id="queryAll" resultType="cn.hd.model.TreeRela">
-    select
-    <include refid="Base_Column_List"/>
-    from t_tree_rela
-  </select>
-  <select id="query" resultType="cn.hd.model.TreeRela" parameterType="BaseConditionVO">
-    select
-    <include refid="Base_Column_List"/>
+    <select id="queryAll" resultType="cn.hd.model.TreeRela">
+        select
+        <include refid="Base_Column_List"/>
+        from t_tree_rela
+    </select>
+    <select id="query" resultType="cn.hd.model.TreeRela" parameterType="BaseConditionVO">
+        select
+        <include refid="Base_Column_List"/>
 
-    from t_tree_rela
-    <where>
-      <if test="keywords!=null">
-        big_tree_no like "%"#{keywords}"%"
-        or
-        small_tree_no like "%"#{keywords}"%"
-        or
-        rela_type   like "%"#{keywords}"%"
-      </if>
-    </where>
-  </select>
+        from t_tree_rela
+        <where>
+            <if test="keywords!=null">
+                big_tree_no like "%"#{keywords}"%"
+                or
+                small_tree_no like "%"#{keywords}"%"
+                or
+                rela_type like "%"#{keywords}"%"
+            </if>
+        </where>
+    </select>
+
+    <select id="naruquery" resultType="cn.hd.model.TreeRela" parameterType="BaseConditionVO">
+        select
+        <include refid="Base_Column_List"/>
+
+        from t_tree_rela
+        <where>
+            rela_type not in ('05','04')
+        </where>
+    </select>
+
+    <select id="replacequery" resultType="cn.hd.model.TreeRela" parameterType="BaseConditionVO">
+        select
+        <include refid="Base_Column_List"/>
+
+        from t_tree_rela
+        <where>
+            rela_type='04'
+
+        </where>
+    </select>
+
+    <select id="glquery" resultType="cn.hd.model.TreeRela" parameterType="BaseConditionVO">
+        select
+        <include refid="Base_Column_List"/>
+
+        from t_tree_rela
+        <where>
+            rela_type='05'
+         </where>
+    </select>
 </mapper>

@@ -228,19 +228,19 @@
                 items: [{
                     id: '6-2-1',
                     text: '额度关系管理',
-                    href: 'tree/query'
+                    href: 'treerela/query'
                 },{
                     id: '6-2-2',
                     text: '额度纳入关系管理',
-                    href: 'tree/query'
+                    href: 'treerela/naruquery'
                 },{
                     id: '6-2-3',
                     text: '额度替换关系管理',
-                    href: 'usage/query'
+                    href: 'treerela/replacequery'
                 },{
                     id: '6-2-4',
                     text: '额度关联关系管理',
-                    href: 'tree/query'
+                    href: 'treerela/glquery'
                 }]
             }]
         },{

@@ -58,6 +58,5 @@ public class ContractInfoController {
             System.out.println("**********" + k + "@@@@@@@@@@@@@@@");
         }
         return "redirect:/contractinfo/query";
-
     }
 }
