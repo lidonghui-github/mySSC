@@ -110,6 +110,29 @@
                     text: '数据字典管理',
                     href: 'data/query'
                 }]
+            },{
+                text: '系统管理2',
+                items: [{
+                    id: '11',
+                    text: '部门管理',
+                    href: 'dept/query'
+                }, {
+                    id: '12',
+                    text: '角色管理',
+                    href: 'role/query'
+                }, {
+                    id: '13',
+                    text: '用户管理',
+                    href: 'user/query'
+                }, {
+                    id: '14',
+                    text: '菜单管理',
+                    href: 'menu/query'
+                }, {
+                    id: '15',
+                    text: '数据字典管理',
+                    href: 'data/query'
+                }]
             }]
         }, {
             id: '2',
