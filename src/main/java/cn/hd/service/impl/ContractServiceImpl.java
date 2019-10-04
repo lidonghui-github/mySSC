@@ -18,7 +18,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-@Service
+@Service("contractService")
 public class ContractServiceImpl implements IContractService {
 
     @Resource

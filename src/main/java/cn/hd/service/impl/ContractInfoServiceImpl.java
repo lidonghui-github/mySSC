@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 
 import java.util.List;
 
-@Service
+@Service("contractInfoService")
 public class ContractInfoServiceImpl implements IContractInfoService {
     @Resource
     ContractInfoMapper contractInfoMapper;
