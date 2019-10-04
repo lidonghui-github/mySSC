@@ -26,7 +26,7 @@ public class TreeContractUtil {
         if (tree == null) {
             return null;
         }
-        tree.setUsedAmt(BigDecimalUtil.add(tree.getApprAmt(), contract.getContAmt()));
+        tree.setUsedAmt(BigDecimalUtil.add(tree.getUsedAmt(), contract.getContAmt()));
         tree.setEnabAmt(BigDecimalUtil.subtract1(tree.getEnabAmt(), contract.getContAmt()));
         tree.setUpdTime(DateUtil.getCurrentDateTime());
         tree.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(tree.getUpdTime()));

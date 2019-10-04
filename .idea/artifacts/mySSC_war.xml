@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="mySSC-0.0.1-SNAPSHOT.war">
+    <root id="archive" name="mySSC-1.0.war">
       <element id="artifact" artifact-name="mySSC:war exploded" />
     </root>
   </artifact>
