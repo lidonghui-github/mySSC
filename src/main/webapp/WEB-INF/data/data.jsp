@@ -46,6 +46,8 @@ body {
 <body>
 	<form action="data/save" method="post" class="definewidth m20">
 		<table class="table table-bordered table-hover definewidth m10">
+			<caption>初始化字典数据</caption>
+			<thead>初始化字典数据</thead>
 			<input type="hidden" name="dataId" value="${data.dataId }" />
 			<tr>
 
