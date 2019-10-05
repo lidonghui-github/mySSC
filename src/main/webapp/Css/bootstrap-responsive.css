@@ -41,7 +41,7 @@
 }
 
 @-ms-viewport {
-  width: device-width;
+  width: 10px;
 }
 
 .hidden {

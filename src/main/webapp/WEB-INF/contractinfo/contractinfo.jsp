@@ -12,6 +12,7 @@
     <base href="<%=basePath%>">
     <title></title>
     <meta charset="UTF-8">
+    <%--链接式引入CSS--%>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/style.css"/>
@@ -82,6 +83,9 @@
         <tr>
             <td class="tableleft">备注</td>
             <td><input type="text" name="remark" value="${contractinfo.remark}"/></td>
+           <%-- <td>
+                <textarea name="remark" cols="30" rows="5" wrap="soft" value="${contractinfo.remark}"/>
+            </td>--%>
         </tr>
 
 
