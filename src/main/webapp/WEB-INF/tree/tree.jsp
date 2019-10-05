@@ -64,7 +64,7 @@
         </tr>
         <tr>
             <td class="tableleft">额度状态</td>
-            <td><input type="text" readonly="true" name="crdtStat" value="${tree.crdtStat}"/></td>
+            <td><input type="text" readonly="readonly" name="crdtStat" value="${tree.crdtStat}"/></td>
         </tr>
         <tr>
             <td class="tableleft">授信金额</td>

@@ -60,11 +60,11 @@
         </tr>
         <tr>
             <td width="10%" class="tableleft">创建时间</td>
-            <td><input type="text" name="crtTimeFormat" value="${contract.crtTimeFormat}"/></td>
+            <td><input type="text"   disabled="disabled" readonly="readonly" name="crtTimeFormat" value="${contract.crtTimeFormat}"/></td>
         </tr>
         <tr>
             <td width="10%" class="tableleft">更新时间</td>
-            <td><input type="text" name="updTimeFormat" value="${contract.updTimeFormat}"/></td>
+            <td><input type="text"   disabled="disabled" readonly="readonly" name="updTimeFormat" value="${contract.updTimeFormat}"/></td>
         </tr>
         <tr>
             <td width="10%" class="tableleft">合同起始日</td>
@@ -76,7 +76,7 @@
         </tr>
         <tr>
             <td width="10%" class="tableleft">版本号</td>
-            <td><input type="Integer" name="verNo" value="${contract.verNo}"/></td>
+            <td><input type="Integer" disabled="disabled" readonly="readonly" name="verNo" value="${contract.verNo}"/></td>
         </tr>
         <tr>
             <td class="tableleft">备注</td>

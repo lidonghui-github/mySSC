@@ -64,15 +64,15 @@
         </tr>
         <tr>
             <td class="tableleft">创建时间</td>
-            <td><input type="text" readonly="true" name="crtTimeFormat" value="${treerela.crtTimeFormat}"/></td>
+            <td><input type="text"   disabled="disabled" readonly="true" name="crtTimeFormat" value="${treerela.crtTimeFormat}"/></td>
         </tr>
         <tr>
             <td class="tableleft">更新时间</td>
-            <td><input type="Integer"  readonly="true"  name="updTimeFromat" value="${treerela.updTimeFromat}"/></td>
+            <td><input type="text"    disabled="disabled" readonly="true"  name="updTimeFromat" value="${treerela.updTimeFromat}"/></td>
         </tr>
         <tr>
             <td class="tableleft">版本号</td>
-            <td><input type="Integer" readonly="true" name="verNo" value="${treerela.verNo}"/></td>
+            <td><input type="Integer"   disabled="disabled" readonly="true" name="verNo" value="${treerela.verNo}"/></td>
         </tr>
         <tr>
             <td class="tableleft">备注</td>
