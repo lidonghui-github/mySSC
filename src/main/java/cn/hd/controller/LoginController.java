@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import cn.hd.model.BaseConditionVO;
 import cn.hd.model.LoginLog;
@@ -25,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/login")
 public class LoginController {
     @RequestMapping("/login")
-    public String login(String name, String password, HttpServletRequest request) {
+    public String login(String name, String password, HttpServletRequest request, HttpSession session) {
         List<Userbean> users = userService.findUserByName(name);
 
         boolean flag = false;
@@ -34,9 +35,10 @@ public class LoginController {
                 if (u.getPassword().equals(password)) {
                     System.out.println("登录成功！");
                     System.out.println(u.toString());
-                    insertLoginLog(u, request);
+                    insertLoginLog(u, request,session);
                     flag = true;
-                    request.setAttribute("user", u);
+                    request.setAttribute("username",  u.getUsername());
+                    session.setAttribute("username", u.getUsername());
                     break;
                 }
             }
@@ -52,7 +54,7 @@ public class LoginController {
     }
 
     //记录登录信息
-    public void insertLoginLog(Userbean u, HttpServletRequest request) {
+    public void insertLoginLog(Userbean u, HttpServletRequest request,HttpSession session) {
         LoginLog loginLog = new LoginLog();
         loginLog.setId(UUIDUtil.getId());
         loginLog.setLoginTime(DateUtil.getCurrentDateTime());
@@ -60,7 +62,8 @@ public class LoginController {
         loginLog.setLoginIp(request.getLocalAddr());
         loginLog.initLoginTimeFormat();
         loginLogService.insert(loginLog);
-        request.setAttribute("user", u);
+        request.setAttribute("username",  u.getUsername());
+        session.setAttribute("username",  u.getUsername());
     }
 
     @RequestMapping("/query")
