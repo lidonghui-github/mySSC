@@ -87,7 +87,7 @@
         </tr>
     </c:forEach>
 </table>
-<form action="tree/query" id="pager" name="pager" method="post">
+<form action="usage/query" id="pager" name="pager" method="post">
     <input type="hidden" name="pageNum" id="pageNum"
            value="${pageModel.pageNum}"> <input type="hidden"
                                                 name="pageSize" id="pageSize" value="${pageModel.pageSize}">

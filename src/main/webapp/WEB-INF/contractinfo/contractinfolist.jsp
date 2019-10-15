@@ -55,6 +55,7 @@
     <thead>
     <tr>
         <%--  <th colspan="1" height="10px">合同id号</th>--%>
+        <th colspan="1" height="10px">选择</th>
         <th colspan="1" height="10px">合同编号</th>
         <th colspan="1" height="10px">创建时间</th>
         <th colspan="1" height="10px">更新时间</th>
@@ -68,6 +69,9 @@
     <c:forEach items="${pageModel.list}" var="contractinfo">
         <tr>
                 <%-- <td>${contractinfo.id}</td>--%>
+            <td>
+                <input type="checkbox" name="id" value="1"/>
+            </td>
             <td>${contractinfo.contNo}</td>
             <td>${contractinfo.crtTimeFormat }</td>
             <td>${contractinfo.updTimeFormat }</td>
