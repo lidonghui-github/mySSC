@@ -93,7 +93,7 @@
             <td>${tree.remark }</td>
 
             <td><a href="tree/updatePage/${tree.id }">编辑</a>
-                <a id="delete" href="tree/delete/${tree.id }">删除</a>
+                <a id="delete" href="tree/delete/${tree.id }" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a>
             </td>
 
             <td>
