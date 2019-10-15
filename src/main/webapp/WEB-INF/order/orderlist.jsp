@@ -88,7 +88,7 @@ body {
 				<td>${orderExtend.orderCustomerNo }</td>
 				<td>${orderExtend.remark }</td>
 				<td><a href="order/updatePage/${orderExtend.orderNo }">编辑</a> <a
-					href="order/delete/${orderExtend.orderNo }">删除</a></td>
+					href="order/delete/${orderExtend.orderNo }" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -81,7 +81,7 @@
             <td>${contract.verNo }</td>
             <td>${contract.remark }</td>
             <td><a class="btn btn-success" href="contract/updatePage/${contract.id}">编辑</a>
-                <a id="delete" class="btn btn-primary" href="contract/delete/${contract.id}">删除</a>
+                <a id="delete" class="btn btn-primary" href="contract/delete/${contract.id}" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a>
             </td>
         </tr>
     </c:forEach>

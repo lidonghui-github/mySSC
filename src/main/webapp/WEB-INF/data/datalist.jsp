@@ -69,7 +69,7 @@
 
             <td>
                 <a href="data/updatePage/${u.dataId }">编辑</a>
-                <a href="data/delete/${u.dataId }">删除</a>
+                <a href="data/delete/${u.dataId }" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a>
             </td>
         </tr>
     </c:forEach>

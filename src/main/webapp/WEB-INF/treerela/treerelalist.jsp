@@ -80,7 +80,7 @@
             <td>${treerela.remark }</td>
 
             <td><a href="treerela/updatePage/${treerela.id }">编辑</a>
-                <a id="delete" href="treerela/delete/${treerela.id }">删除</a>
+                <a id="delete" href="treerela/delete/${treerela.id }" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a>
             </td>
         </tr>
     </c:forEach>

@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               
              <td>
                 <a href="dept/updatePage/${u.deptId }">编辑</a>  
-                <a  href="dept/delete/${u.deptId }">删除</a>               
+                <a  href="dept/delete/${u.deptId }" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a>
             </td>       
         </tr>	
         </c:forEach>

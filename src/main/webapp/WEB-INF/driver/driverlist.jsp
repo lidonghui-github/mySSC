@@ -88,7 +88,7 @@ body {
 				<td>${u.cancellationTime }</td>
 				<td>${u.remark }</td>
 				<td><a href="driver/updatePage/${u.driverId }">编辑</a> <a
-					href="driver/delete/${u.driverId }">删除</a></td>
+					href="driver/delete/${u.driverId }" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
 			</tr>
 		</c:forEach>
 	</table>

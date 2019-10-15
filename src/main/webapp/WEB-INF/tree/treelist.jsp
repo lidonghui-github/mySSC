@@ -97,8 +97,8 @@
             </td>
 
             <td>
-                <a id="froz" class="btn btn-success" href="froz/frozPage/${tree.treeNo}">冻结</a>
-                <a id="tthaw"  class="btn btn-primary" href="froz/tthawPage/${tree.treeNo}">解冻</a>
+                <a id="froz" class="btn btn-success" href="froz/frozPage/${tree.treeNo}" onclick="{if(confirm('确认冻结?')){return true;}return false;}">冻结</a>
+                <a id="tthaw"  class="btn btn-primary" href="froz/tthawPage/${tree.treeNo}" onclick="{if(confirm('确认解冻?')){return true;}return false;}">解冻</a>
             </td>
         </tr>
     </c:forEach>
@@ -119,32 +119,7 @@
         $('#addnew').click(function () {
             window.location.href = "<%=path%>/tree/init";
         });
-        $('#delete').click(function () {
-            if (confirm("确定要删除吗？")) {
-                var url = "<%=path%>/tree/query";
-                window.location.href = url;
-            }
-        });
 
-    });
-    $(function () {
-        $('#froz').click(function () {
-                if (confirm("确定冻结吗？")) {
-                    var url = "<%=path%>/tree/query";
-                    window.location.href = url;
-                }
-            }
-        );
-
-    });
-    $(function () {
-        $('#tthaw').click(function () {
-                if (confirm("确定解冻吗？")) {
-                    var url = "<%=path%>/tree/query";
-                    window.location.href = url;
-                }
-            }
-        );
     });
 
 

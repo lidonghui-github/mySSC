@@ -81,9 +81,9 @@
             <td>${tree.updTimeFormat }</td>
             <td>${tree.verNo }</td>
             <td>${tree.remark }</td>
-            <%--<td><a id="tusage" href="usage/usagePage/${tree.treeNo}">占用</a>
-                <a id="trecove" href="usage/recovePage/${tree.treeNo}">恢复</a>
-            </td>--%>
+            <td><a id="tusage" href="usage/usagePage/${tree.treeNo}" onclick="{if(confirm('确认占用?')){return true;}return false;}">占用</a>
+                <a id="trecove" href="usage/recovePage/${tree.treeNo}" onclick="{if(confirm('确认恢复?')){return true;}return false;}">恢复</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
@@ -105,29 +105,6 @@
 
             window.location.href = "<%=path%>/usage/init";
         });
-        $('#delete').click(function () {
-            if (confirm("确定要删除吗？")) {
-
-                var url = "<%=path%>/usage/query";
-
-                window.location.href = url;
-
-            }
-        });
-        $('#tusage').click(function () {
-                if (confirm("确定占用吗？")) {
-                    var url = "<%=path%>/usage/query";
-                    window.location.href = url;
-                }
-            }
-        );
-        $('#trecove').click(function () {
-                if (confirm("确定恢复吗？")) {
-                    var url = "<%=path%>/usage/query";
-                    window.location.href = url;
-                }
-            }
-        );
 
 
     });
