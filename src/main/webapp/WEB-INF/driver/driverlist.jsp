@@ -55,7 +55,7 @@ body {
 	<table class="table table-bordered table-hover definewidth m10">
 		<thead>
 			<tr>
-				<th colspan="1">司机id</th>
+			<%--	<th colspan="1">司机id</th>--%>
 				<th colspan="1">司机姓名</th>
 				<th colspan="1">司机性别</th>
 				<th colspan="1">司机身份证号码</th>
@@ -74,7 +74,7 @@ body {
 		</thead>
 		<c:forEach items="${pageModel.list}" var="u">
 			<tr>
-				<td>${u.driverId }</td>
+			<%--	<td>${u.driverId }</td>--%>
 				<td>${u.driverName }</td>
 				<td>${u.driverSex }</td>
 				<td>${u.driverIdcardNumber }</td>

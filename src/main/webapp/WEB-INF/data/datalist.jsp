@@ -53,7 +53,7 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th colspan="1">部门id</th>
+      <%--  <th colspan="1">部门id</th>--%>
         <th colspan="1">字典名称</th>
         <th colspan="1">备注</th>
 
@@ -63,7 +63,7 @@
     </thead>
     <c:forEach items="${pageModel.list}" var="u">
         <tr>
-            <td>${u.dataId } </td>
+           <%-- <td>${u.dataId } </td>--%>
             <td>${u.dataName }</td>
             <td>${u.remark }</td>
 

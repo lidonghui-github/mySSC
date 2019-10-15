@@ -53,7 +53,7 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th colspan="1">id号</th>
+      <%--  <th colspan="1">id号</th>--%>
         <th colspan="1">用户名</th>
         <th colspan="1">登录时间</th>
         <th colspan="1">登录IP地址</th>
@@ -63,7 +63,7 @@
     </thead>
     <c:forEach items="${pageModel.list}" var="login">
         <tr>
-            <td>${login.id }</td>
+         <%--   <td>${login.id }</td>--%>
             <td>${login.userName }</td>
             <td>${login.loginTimeFormat}</td>
             <td>${login.loginIp}</td>

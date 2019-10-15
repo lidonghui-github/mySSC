@@ -10,12 +10,7 @@
    <settings>
      <setting name="cacheEnabled" value="true"/>
    </settings>
-   
-   <typeAliases>
-       
-       <!-- 批量包导入,此时别名默认是类名，第一字母改成小写 -->
-       <package name="cn.hd.model"/>
-   </typeAliases>
+
    <plugins>
     <!-- com.github.pagehelper为PageHelper类所在包名 -->
     <plugin interceptor="com.github.pagehelper.PageHelper">
@@ -43,9 +38,5 @@
         <property name="returnPageInfo" value="check"/>
     </plugin>
     </plugins>
-  
-   <mappers>
-    <package name="cn.hd.mapper"/>
-     
-  </mappers>
+
 </configuration>

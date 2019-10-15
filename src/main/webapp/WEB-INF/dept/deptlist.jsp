@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th colspan="1">部门id</th>
+      <%--  <th colspan="1">部门id</th>--%>
         <th colspan="1">部门名称</th>
         <th colspan="1">备注</th> 
         
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </thead>
        <c:forEach items="${pageModel.list}" var="u">
 	     <tr>
-            <td>${u.deptId } </td>
+          <%--  <td>${u.deptId } </td>--%>
             <td>${u.deptName }</td>
             <td>${u.remark }</td>
               
