@@ -12,6 +12,8 @@
 		http://www.springframework.org/schema/context/spring-context-4.1.xsd">
     <!-- 开启注解 -->
     <mvc:annotation-driven></mvc:annotation-driven>
+<!--开启转换器注解-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
     <!-- 扫描包 -->
     <context:component-scan base-package="cn.hd.controller"></context:component-scan>
     <!--拦截器-->
@@ -41,11 +43,23 @@
             </bean>
         </mvc:interceptor>
     </mvc:interceptors>
-
+    <bean id="conversionService"
+          class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="cn.hd.converter.StringToLocalDateConverter">
+                    <constructor-arg type="java.lang.String" value="HH:MM-dd-yyyy"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
-
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="5000000000"/>
+    </bean>
 </beans>
