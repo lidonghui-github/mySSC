@@ -35,9 +35,8 @@ public class LoginController {
                 if (u.getPassword().equals(password)) {
                     System.out.println("登录成功！");
                     System.out.println(u.toString());
-                    insertLoginLog(u, request,session);
+                    insertLoginLog(u, request, session);
                     flag = true;
-                    request.setAttribute("username",  u.getUsername());
                     session.setAttribute("username", u.getUsername());
                     break;
                 }
@@ -45,25 +44,26 @@ public class LoginController {
         }
         if (!flag) {
             System.out.println("登录失败！");
-
-             return "redirect:/login.jsp";
+            return "redirect:/login.jsp";
         } else {
-             return "redirect:/index.jsp";
+            return "redirect:/index.jsp";
         }
 
     }
 
     //记录登录信息
-    public void insertLoginLog(Userbean u, HttpServletRequest request,HttpSession session) {
+    public void insertLoginLog(Userbean u, HttpServletRequest request, HttpSession session) {
+        if (session.getAttribute("username") != null && u.getUsername().equals(session.getAttribute("username").toString())) {
+            return;
+        }
         LoginLog loginLog = new LoginLog();
         loginLog.setId(UUIDUtil.getId());
         loginLog.setLoginTime(DateUtil.getCurrentDateTime());
         loginLog.setUserName(u.getUsername());
-        loginLog.setLoginIp(request.getLocalAddr());
         loginLog.initLoginTimeFormat();
+        loginLog.setLoginIp(request.getLocalAddr());
         loginLogService.insert(loginLog);
-        request.setAttribute("username",  u.getUsername());
-        session.setAttribute("username",  u.getUsername());
+        session.setAttribute("username", u.getUsername());
     }
 
     @RequestMapping("/query")

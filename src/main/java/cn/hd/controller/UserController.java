@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,13 +32,7 @@ public class UserController {
 	IUserService userService;
 
 	@RequestMapping("/query")
-	public String query(BaseConditionVO vo, Model model) {
-		/*
-		 * List<Userbean> list=userService.queryAll();
-		 * model.addAttribute("userlist", list); for(Userbean u : list){
-		 * System.out.println(u.getUserid()+":"+u.getUsername()); } return
-		 * "user/userlist";
-		 */
+	public String query(BaseConditionVO vo, Model model, HttpSession session) {
 		PageInfo<Userbean> pageInfo = userService.query(vo);
 		model.addAttribute("pageModel", pageInfo);
 		model.addAttribute("vo", vo);
@@ -45,7 +40,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/save")
-	public String save(Userbean user) {
+	public String save(Userbean user, HttpSession session) {
 		if (StringUtil.isNotNull(user.getUserid())) {
 			int k = userService.updateByPrimaryKeySelective(user);
 			System.out.println("**********" + k + "@@@@@@@@@@@@@@@");
@@ -63,14 +58,14 @@ public class UserController {
 	}
 
 	@RequestMapping("/updatePage/{id}")
-	public String updatePage(@PathVariable String id, Model model) {
+	public String updatePage(@PathVariable String id, Model model, HttpSession session) {
 		Userbean user = userService.selectByPrimaryKey(id);
 		model.addAttribute("user", user);
 		return "user/user";
 	}
 
 	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable String id) {
+	public String delete(@PathVariable String id, HttpSession session) {
 
 		userService.deleteByPrimaryKey(id);
 

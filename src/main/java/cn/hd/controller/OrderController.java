@@ -2,7 +2,9 @@ package cn.hd.controller;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
+import cn.hd.utils.CommonServiceUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,10 +25,13 @@ public class OrderController {
 
 	@Resource
 	IOrderService orderService;
-
+	@Resource
+	CommonServiceUtil commonServiceUtil;
 	@RequestMapping("/query")
-	public String query(BaseConditionVO vo, Model model) {
-		
+	public String query(BaseConditionVO vo, Model model, HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		PageInfo<Order> pageInfo = orderService.query(vo);
 		model.addAttribute("pageModel", pageInfo);
 		model.addAttribute("vo", vo);
@@ -34,7 +39,10 @@ public class OrderController {
 	}
 
 	@RequestMapping("/save")
-	public String save(Order order) {
+	public String save(Order order, HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		if (StringUtil.isNotNull(order.getOrderNo())) {
 			order.setOrderUpdTime(DateUtil.getCurrentDateTime());
 			order.setOrderUpdUserNo(order.getOrderUpdUserNo());
@@ -62,22 +70,30 @@ public class OrderController {
 	}
 
 	@RequestMapping("/updatePage/{id}")
-	public String updatePage(@PathVariable String id, Model model) {
+	public String updatePage(@PathVariable String id, Model model, HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		Order order = orderService.selectByPrimaryKey(id);
 		model.addAttribute("order", order);
 		return "order/order";
 	}
 
 	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable String id) {
-
+	public String delete(@PathVariable String id, HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		orderService.deleteByPrimaryKey(id);
 
 		return "redirect:/order/query";
 	}
 
 	@RequestMapping("/init")
-	public String init() {
+	public String init(HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		return "order/order";
 	}
 

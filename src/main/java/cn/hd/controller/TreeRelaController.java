@@ -1,6 +1,4 @@
 package cn.hd.controller;
-
-import cn.hd.enums.CacheKey;
 import cn.hd.model.BaseConditionVO;
 
 
@@ -8,6 +6,7 @@ import cn.hd.model.Tree;
 import cn.hd.model.TreeRela;
 import cn.hd.service.ITreeRelaService;
 import cn.hd.service.ITreeService;
+import cn.hd.utils.CommonServiceUtil;
 import cn.hd.utils.StringUtil;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -29,32 +28,45 @@ public class TreeRelaController {
     protected static final Logger logger = LoggerFactory.getLogger(TreeRelaController.class);
     @Resource
     ITreeRelaService treeRelaService;
-
+    @Resource
+    CommonServiceUtil commonServiceUtil;
     @Resource
     ITreeService treeService;
 
     @RequestMapping("/init")
     public String init(HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
         //先初始化缓存信息
         initSessionError(session);
         return "treerela/treerela";
     }
 
     @RequestMapping("/delete/{id}")
-    public String delete(@PathVariable String id) {
+    public String delete(@PathVariable String id, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
         treeRelaService.deleteByPrimaryKey(id);
         return "redirect:/treerela/query";
     }
 
     @RequestMapping("/updatePage/{id}")
-    public String updatePage(@PathVariable String id, Model model) {
+    public String updatePage(@PathVariable String id, Model model, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
         TreeRela treeRela = treeRelaService.selectByPrimaryKey(id);
         model.addAttribute("treerela", treeRela);
         return "treerela/treerela";
     }
 
     @RequestMapping("/query")
-    public String query(BaseConditionVO vo, Model model) {
+    public String query(BaseConditionVO vo, Model model, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
         PageInfo<TreeRela> pageInfo = treeRelaService.query(vo);
         model.addAttribute("pageModel", pageInfo);
         model.addAttribute("vo", vo);
@@ -62,7 +74,10 @@ public class TreeRelaController {
     }
 
     @RequestMapping("/naruquery")
-    public String naruquery(BaseConditionVO vo, Model model) {
+    public String naruquery(BaseConditionVO vo, Model model, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
         PageInfo<TreeRela> pageInfo = treeRelaService.naruquery(vo);
         model.addAttribute("pageModel", pageInfo);
         model.addAttribute("vo", vo);
@@ -70,7 +85,10 @@ public class TreeRelaController {
     }
 
     @RequestMapping("/replacequery")
-    public String replacequery(BaseConditionVO vo, Model model) {
+    public String replacequery(BaseConditionVO vo, Model model, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
         PageInfo<TreeRela> pageInfo = treeRelaService.replacequery(vo);
         model.addAttribute("pageModel", pageInfo);
         model.addAttribute("vo", vo);
@@ -78,7 +96,10 @@ public class TreeRelaController {
     }
 
     @RequestMapping("/glquery")
-    public String glquery(BaseConditionVO vo, Model model) {
+    public String glquery(BaseConditionVO vo, Model model, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
         PageInfo<TreeRela> pageInfo = treeRelaService.glquery(vo);
         model.addAttribute("pageModel", pageInfo);
         model.addAttribute("vo", vo);
@@ -87,6 +108,9 @@ public class TreeRelaController {
 
     @RequestMapping("/save")
     public String save(TreeRela treeRela, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
         initSessionError(session);
         //1.非空检查
         checkNull(treeRela, session);
@@ -164,6 +188,5 @@ public class TreeRelaController {
                 logger.error("关系不一致需要更新。。。。。。。");
             }
         }
-
     }
 }

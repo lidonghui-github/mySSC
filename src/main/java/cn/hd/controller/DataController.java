@@ -1,7 +1,9 @@
 package cn.hd.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
+import cn.hd.utils.CommonServiceUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +23,13 @@ public class DataController {
 
 	@Resource
 	IDataService dataService;
-
+	@Resource
+	CommonServiceUtil commonServiceUtil;
 	@RequestMapping("/query")
-	public String query(BaseConditionVO vo, Model model) {
-		
+	public String query(BaseConditionVO vo, Model model, HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		PageInfo<Data> pageInfo = dataService.query(vo);
 		model.addAttribute("pageModel", pageInfo);
 		model.addAttribute("vo", vo);
@@ -32,7 +37,10 @@ public class DataController {
 	}
 
 	@RequestMapping("/save")
-	public String save(Data data) {
+	public String save(Data data, HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		if (StringUtil.isNotNull(data.getDataId())) {
 			int k = dataService.updateByPrimaryKey(data);
 			System.out.println("**********" + k + "@@@@@@@@@@@@@@@");
@@ -49,22 +57,30 @@ public class DataController {
 	}
 
 	@RequestMapping("/updatePage/{id}")
-	public String updatePage(@PathVariable String id, Model model) {
+	public String updatePage(@PathVariable String id, Model model, HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		Data data = dataService.selectByPrimaryKey(id);
 		model.addAttribute("data", data);
 		return "data/data";
 	}
 
 	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable String id) {
-
+	public String delete(@PathVariable String id, HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		dataService.deleteByPrimaryKey(id);
 
 		return "redirect:/data/query";
 	}
 
 	@RequestMapping("/init")
-	public String init() {
+	public String init(HttpSession session) {
+		if (!commonServiceUtil.checkSession(session)) {
+			return "redirect:/login.jsp";
+		}
 		return "data/data";
 	}
 
