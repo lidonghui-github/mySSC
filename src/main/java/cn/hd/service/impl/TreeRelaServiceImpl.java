@@ -3,12 +3,11 @@ package cn.hd.service.impl;
 import cn.hd.mapper.TreeRelaMapper;
 
 import cn.hd.model.BaseConditionVO;
+import cn.hd.model.Tree;
 import cn.hd.model.TreeRela;
 import cn.hd.service.ITreeRelaService;
-import cn.hd.utils.DateUtil;
-import cn.hd.utils.MyDateUtil;
-import cn.hd.utils.StringUtil;
-import cn.hd.utils.UUIDUtil;
+import cn.hd.service.ITreeService;
+import cn.hd.utils.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -20,6 +19,8 @@ import java.util.List;
 public class TreeRelaServiceImpl implements ITreeRelaService {
     @Resource
     TreeRelaMapper treeRelaMapper;
+    @Resource
+    ITreeService treeService;
 
     @Override
     public List<TreeRela> queryAll() {
@@ -35,6 +36,9 @@ public class TreeRelaServiceImpl implements ITreeRelaService {
     public int insert(TreeRela record) {
         //组织额度关系
         initSaveTreeRela(record);
+        //更新纳入额度数据
+        updateBigTreeMoneyByTreeRela(record);
+        //插入额度关系
         return treeRelaMapper.insert(record);
     }
 
@@ -93,7 +97,7 @@ public class TreeRelaServiceImpl implements ITreeRelaService {
 
     @Override
     public List<TreeRela> findTreeRelaByBigAndSmallTreeNo(String bigTreeNo, String smallTreeNo) {
-        return treeRelaMapper.findTreeRelaByBigAndSmallTreeNo(bigTreeNo,smallTreeNo);
+        return treeRelaMapper.findTreeRelaByBigAndSmallTreeNo(bigTreeNo, smallTreeNo);
     }
 
 
@@ -121,5 +125,22 @@ public class TreeRelaServiceImpl implements ITreeRelaService {
         treeRela.setRelaType(record.getRelaType());
         treeRela.setValidFlag(record.getValidFlag());
         return treeRela;
+    }
+
+    //更新纳入额度的已用、可用金额
+    public void updateBigTreeMoneyByTreeRela(TreeRela treeRela) {
+        Tree bigTree = treeService.selectByTreeNo(treeRela.getBigTreeNo());
+        Tree smallTree = treeService.selectByTreeNo(treeRela.getSmallTreeNo());
+        bigTree.setUsedAmt(BigDecimalUtil.add(bigTree.getUsedAmt(), smallTree.getUsedAmt()));
+        bigTree.setEnabAmt(BigDecimalUtil.subtract1(bigTree.getEnabAmt(), smallTree.getUsedAmt()));
+        bigTree.setUpdTime(DateUtil.getCurrentDateTime());
+        bigTree.setUpdTimeFormat(MyDateUtil.dateFormate_YYYY_MM_DD_HH_mm_ss(bigTree.getUpdTime()));
+        bigTree.setVerNo(StringUtil.isNull(bigTree.getVerNo()) ? 1 : treeRela.getVerNo() + 1);
+        bigTree.setRemark("额度关系:["+bigTree.getTreeNo()+" 关系类型:"+treeRela.getRelaType()+" "+smallTree.getTreeNo()+"]所致");
+        try {
+            treeService.updateByPrimaryKeySelective(bigTree);
+        } catch (Exception ex) {
+            throw new RuntimeException("更新额度:" + bigTree.getTreeNo() + "失败....");
+        }
     }
 }
