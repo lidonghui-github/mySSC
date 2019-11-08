@@ -43,8 +43,14 @@
     </style>
 </head>
 <body>
+<form class="form-inline definewidth m20" >
+    错误信息提示： <input type="text" name="keywords" id="error"
+                class="abc input-default" placeholder="错误信息提示"  disabled="disabled" readonly="true"
+                value="${sessionScope.get("error")}">    &nbsp;&nbsp;
+</form>
 <form action="treerela/save" method="post" class="definewidth m20">
     <table class="table table-bordered table-hover definewidth m10">
+
         <input type="hidden" name="id" value="${treerela.id }"/>
         <tr>
             <td width="10%" class="tableleft">纳入额度编号</td>
@@ -84,8 +90,6 @@
             <td class="tableleft"></td>
             <td>
                 <button type="submit" name="saveid" id="saveid" class="btn btn-primary">保存</button>
-                <%--<button type="submit" class="btn btn-primary" name="backid" id="backid">返回列表</button>--%>
-
             </td>
         </tr>
     </table>
