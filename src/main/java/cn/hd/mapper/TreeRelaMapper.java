@@ -3,6 +3,7 @@ package cn.hd.mapper;
 import cn.hd.model.BaseConditionVO;
 
 import cn.hd.model.TreeRela;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,4 +27,6 @@ public interface TreeRelaMapper {
     List<TreeRela> replacequery(BaseConditionVO vo);
 
     List<TreeRela> glquery(BaseConditionVO vo);
+
+    List<TreeRela> findTreeRelaByBigAndSmallTreeNo(@Param("bigTreeNo") String bigTreeNo, @Param("smallTreeNo")  String smallTreeNo);
 }

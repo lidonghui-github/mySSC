@@ -213,4 +213,14 @@
             rela_type='05'
          </where>
     </select>
+
+
+
+    <select id="findTreeRelaByBigAndSmallTreeNo" parameterType="String" resultType="cn.hd.model.TreeRela">
+        select
+        <include refid="Base_Column_List"/>
+        from t_tree_rela
+        where  big_tree_no = #{bigTreeNo}  and   small_tree_no = #{smallTreeNo}
+
+    </select>
 </mapper>

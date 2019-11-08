@@ -33,6 +33,7 @@ public class TreeRelaServiceImpl implements ITreeRelaService {
 
     @Override
     public int insert(TreeRela record) {
+        //组织额度关系
         initSaveTreeRela(record);
         return treeRelaMapper.insert(record);
     }
@@ -88,6 +89,11 @@ public class TreeRelaServiceImpl implements ITreeRelaService {
         List<TreeRela> list = treeRelaMapper.glquery(vo);
         PageInfo<TreeRela> pageInfo = new PageInfo<>(list);
         return pageInfo;
+    }
+
+    @Override
+    public List<TreeRela> findTreeRelaByBigAndSmallTreeNo(String bigTreeNo, String smallTreeNo) {
+        return treeRelaMapper.findTreeRelaByBigAndSmallTreeNo(bigTreeNo,smallTreeNo);
     }
 
 
