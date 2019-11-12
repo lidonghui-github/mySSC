@@ -4,7 +4,7 @@ import java.util.List;
 
 import cn.hd.model.BaseConditionVO;
 import cn.hd.model.Data;
-import cn.hd.model.Dept;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
