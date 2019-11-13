@@ -23,9 +23,9 @@
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, rescriptumno, cust_no, root_no, crdt_type, appr_amt, use_appr_amt, froz_appr_amt, 
-    enab_appr_amt, crdt_stat, froz_stat, cov_into_flag, cov_repl_flag, crdt_vald_date, 
-    crdt_end_date, crt_time, upd_time, ver_no, remark
+    id, rescriptumno, cust_no as custNo, root_no as rootNo, crdt_type as crdtType, appr_amt as apprAmt , use_appr_amt as useApprAmt, froz_appr_amt as frozApprAmt,
+    enab_appr_amt as enabApprAmt, crdt_stat as crdtStat, froz_stat as frozStat, cov_into_flag as covIntoFlag, cov_repl_flag as covReplFlag, crdt_vald_date as crdtValdDate,
+    crdt_end_date as crdtEndDate, crt_time as crtTime, upd_time as updTime, ver_no as verNo, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -256,4 +256,20 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="query" resultType="cn.hd.model.Approval" parameterType="BaseConditionVO">
+    select
+    <include refid="Base_Column_List"/>
+    from t_appr
+    <where>
+      <if test="keywords!=null">
+        rescriptumno like "%"#{keywords}"%"
+        or
+        cust_no like  "%"#{keywords}"%"
+        or
+        root_no like  "%"#{keywords}"%"
+      </if>
+    </where>
+  </select>
 </mapper>

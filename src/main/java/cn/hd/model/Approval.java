@@ -3,42 +3,43 @@ package cn.hd.model;
 import java.util.Date;
 
 public class Approval {
+    //主键id
     private String id;
-
+    //批复号
     private String rescriptumno;
-
+    //客户号
     private String custNo;
-
+    //根节点号
     private String rootNo;
-
+    //额度类型
     private String crdtType;
-
+    //授信金额
     private Long apprAmt;
-
+    //已用授信金额
     private Long useApprAmt;
-
+    //冻结授信金额
     private Long frozApprAmt;
-
+    //可用授信金额
     private Long enabApprAmt;
-
+    //额度状态
     private String crdtStat;
-
+    //冻结状态
     private String frozStat;
-
+    //被纳入标识
     private String covIntoFlag;
-
+    //被替换标识
     private String covReplFlag;
-
+    //额度生效日
     private Date crdtValdDate;
-
+    //额度到期日
     private Date crdtEndDate;
-
+    //创建时间
     private Date crtTime;
-
+    //更新时间
     private Date updTime;
-
+    //版本号
     private Integer verNo;
-
+    //备注
     private String remark;
 
     public String getId() {
@@ -191,5 +192,30 @@ public class Approval {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Approval{" +
+                "id='" + id + '\'' +
+                ", rescriptumno='" + rescriptumno + '\'' +
+                ", custNo='" + custNo + '\'' +
+                ", rootNo='" + rootNo + '\'' +
+                ", crdtType='" + crdtType + '\'' +
+                ", apprAmt=" + apprAmt +
+                ", useApprAmt=" + useApprAmt +
+                ", frozApprAmt=" + frozApprAmt +
+                ", enabApprAmt=" + enabApprAmt +
+                ", crdtStat='" + crdtStat + '\'' +
+                ", frozStat='" + frozStat + '\'' +
+                ", covIntoFlag='" + covIntoFlag + '\'' +
+                ", covReplFlag='" + covReplFlag + '\'' +
+                ", crdtValdDate=" + crdtValdDate +
+                ", crdtEndDate=" + crdtEndDate +
+                ", crtTime=" + crtTime +
+                ", updTime=" + updTime +
+                ", verNo=" + verNo +
+                ", remark='" + remark + '\'' +
+                '}';
     }
 }

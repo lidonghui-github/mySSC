@@ -132,6 +132,13 @@
                     text: '数据字典管理',
                     href: 'data/query'
                 }]
+            },{
+                text: '批复管理',
+                items: [{
+                    id: '1-3-1',
+                    text: '批复信息管理',
+                    href: 'approval/query'
+                }]
             }]
         }, {
             id: '2',
