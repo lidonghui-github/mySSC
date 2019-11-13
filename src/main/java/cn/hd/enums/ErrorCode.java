@@ -3,7 +3,9 @@ package cn.hd.enums;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Created by 孙刚 on 2016/4/11.
+ */
 public enum ErrorCode {
     //公共错误：
     成功("AAAAAAA","成功")
