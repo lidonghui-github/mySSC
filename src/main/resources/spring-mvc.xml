@@ -50,6 +50,10 @@
                 <bean class="cn.hd.converter.StringToLocalDateConverter">
                     <constructor-arg type="java.lang.String" value="HH:MM-dd-yyyy"/>
                 </bean>
+                <bean class="cn.hd.converter.StringToNewDateConverter">
+                </bean>
+                <bean class="cn.hd.converter.StringToNewDateConverter2">
+                </bean>
             </list>
         </property>
     </bean>

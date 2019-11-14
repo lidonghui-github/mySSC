@@ -43,12 +43,8 @@ public class ApprovalController {
 			int k = approvalService.updateByPrimaryKey(approval);
 			System.out.println("**********" + k + "@@@@@@@@@@@@@@@");
 		} else {
-			Approval approval1 = new Approval();
-			approval1.setId(UUIDUtil.getNumId().substring(0, 18));
-
-
-
-			approvalService.insert(approval1);
+			approval.setId(UUIDUtil.getNumId().substring(0, 18));
+			approvalService.insert(approval);
 		}
 		return "redirect:/approval/query";
 

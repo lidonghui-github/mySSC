@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -89,10 +90,10 @@
             <td>${u.frozStat }</td>
             <td>${u.covIntoFlag }</td>
             <td>${u.covReplFlag }</td>
-            <td>${u.crdtValdDate }</td>
-            <td>${u.crdtEndDate }</td>
-            <td>${u.crtTime }</td>
-            <td>${u.updTime }</td>
+            <td><fmt:formatDate value="${u.crdtValdDate}" pattern="yyyy-MM-dd"/> </td>
+            <td><fmt:formatDate value="${u.crdtEndDate }" pattern="yyyy-MM-dd"/> </td>
+            <td><fmt:formatDate value="${u.crtTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+            <td><fmt:formatDate value="${u.updTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
             <td>${u.verNo }</td>
             <td>${u.remark }</td>
             <td>
