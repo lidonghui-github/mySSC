@@ -16,6 +16,6 @@ public class StringToNewDateConverter2 implements Converter<String, Date> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return new Date();
+        return null;
     }
 }

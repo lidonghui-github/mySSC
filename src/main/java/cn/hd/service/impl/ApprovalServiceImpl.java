@@ -1,5 +1,6 @@
 package cn.hd.service.impl;
 
+import cn.hd.approvalUtils.ApprovalUtil;
 import cn.hd.mapper.ApprovalMapper;
 import cn.hd.model.Approval;
 import cn.hd.model.BaseConditionVO;
@@ -18,6 +19,8 @@ import java.util.List;
 public class ApprovalServiceImpl implements IApprovalService {
     @Resource
     ApprovalMapper approvalMapper;
+    @Resource
+    ApprovalUtil approvalUtil;
     @Override
     public List<Approval> queryAll() {
         return null;
@@ -30,6 +33,7 @@ public class ApprovalServiceImpl implements IApprovalService {
 
     @Override
     public int insert(Approval record) {
+        approvalUtil.initApprovalInfo(record);
         return approvalMapper.insert(record);
     }
 

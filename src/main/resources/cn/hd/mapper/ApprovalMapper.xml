@@ -272,4 +272,12 @@
       </if>
     </where>
   </select>
+
+
+  <select id="findApprovalByApprNo" resultType="cn.hd.model.Approval" parameterType="BaseConditionVO">
+    select
+    <include refid="Base_Column_List"/>
+    from t_appr
+    where rescriptumno = #{apprNo}
+  </select>
 </mapper>

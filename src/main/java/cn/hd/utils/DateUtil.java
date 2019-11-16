@@ -51,6 +51,15 @@ public class DateUtil {
             throw new RuntimeException(e);
         }
     }
+    public static Date dateFormate_ldh(String date){
+        SimpleDateFormat sdf =new SimpleDateFormat(DATE_FORMAT_YYYY_MM_DD);
+        try {
+            return sdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * 毫秒时间数据专用表达式转换方法 返回时间，如果不能转换则返回当前时间。

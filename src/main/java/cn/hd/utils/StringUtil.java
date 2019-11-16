@@ -57,7 +57,9 @@ public class StringUtil {
     public static boolean isNull(Integer d) {
         return d == null;
     }
-
+    public static boolean isNull(Long d) {
+        return d == null;
+    }
     public static boolean isNotNull(String s) {
         return s != null && s.trim().length() > 0 && (!"null".equals(s.trim()));
     }
