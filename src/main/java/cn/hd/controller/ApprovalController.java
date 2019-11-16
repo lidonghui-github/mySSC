@@ -1,5 +1,9 @@
 package cn.hd.controller;
 
+import cn.hd.enums.ClBCrCrdtApprCrdtType;
+import cn.hd.enums.CreditStatus;
+import cn.hd.enums.FrozStat;
+import cn.hd.enums.IsIf;
 import cn.hd.model.BaseConditionVO;
 import cn.hd.model.Approval;
 import cn.hd.service.IApprovalService;
@@ -14,68 +18,81 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/approval")
 public class ApprovalController {
 
-	@Resource
-	IApprovalService approvalService;
-	@Resource
-	CommonServiceUtil commonServiceUtil;
-	@RequestMapping("/query")
-	public String query(BaseConditionVO vo, Model model, HttpSession session) {
-		if (!commonServiceUtil.checkSession(session)) {
-			return "redirect:/login.jsp";
-		}
-		PageInfo<Approval> pageInfo = approvalService.query(vo);
-		model.addAttribute("pageModel", pageInfo);
-		model.addAttribute("vo", vo);
-		return "approval/approvallist";
-	}
+    @Resource
+    IApprovalService approvalService;
+    @Resource
+    CommonServiceUtil commonServiceUtil;
 
-	@RequestMapping("/save")
-	public String save(Approval approval, HttpSession session) {
-		if (!commonServiceUtil.checkSession(session)) {
-			return "redirect:/login.jsp";
-		}
-		if (StringUtil.isNotNull(approval.getId())) {
-			int k = approvalService.updateByPrimaryKey(approval);
-			System.out.println("**********" + k + "@@@@@@@@@@@@@@@");
-		} else {
-			approval.setId(UUIDUtil.getNumId().substring(0, 18));
-			approvalService.insert(approval);
-		}
-		return "redirect:/approval/query";
+    @RequestMapping("/query")
+    public String query(BaseConditionVO vo, Model model, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
+        PageInfo<Approval> pageInfo = approvalService.query(vo);
+        model.addAttribute("pageModel", pageInfo);
+        model.addAttribute("vo", vo);
+        model.addAttribute("ClBCrCrdtApprCrdtType", ClBCrCrdtApprCrdtType.values());//额度类型
+        model.addAttribute("CreditStatus", CreditStatus.values());//额度状态
+        model.addAttribute("FrozStat", FrozStat.values());//冻结状态
+        model.addAttribute("IsIf", IsIf.values());//是、否
+        return "approval/approvallist";
+    }
 
-	}
+    @RequestMapping("/save")
+    public String save(Approval approval, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
+        if (StringUtil.isNotNull(approval.getId())) {
+            int k = approvalService.updateByPrimaryKey(approval);
+            System.out.println("**********" + k + "@@@@@@@@@@@@@@@");
+        } else {
+            approval.setId(UUIDUtil.getNumId().substring(0, 18));
+            approvalService.insert(approval);
+        }
+        return "redirect:/approval/query";
 
-	@RequestMapping("/updatePage/{id}")
-	public String updatePage(@PathVariable String id, Model model, HttpSession session) {
-		if (!commonServiceUtil.checkSession(session)) {
-			return "redirect:/login.jsp";
-		}
-		Approval approval = approvalService.selectByPrimaryKey(id);
-		model.addAttribute("approval", approval);
-		return "approval/approval";
-	}
+    }
 
-	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable String id, HttpSession session) {
-		if (!commonServiceUtil.checkSession(session)) {
-			return "redirect:/login.jsp";
-		}
-		approvalService.deleteByPrimaryKey(id);
+    @RequestMapping("/updatePage/{id}")
+    public String updatePage(@PathVariable String id, Model model, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
+        Approval approval = approvalService.selectByPrimaryKey(id);
+        model.addAttribute("approval", approval);
+        model.addAttribute("ClBCrCrdtApprCrdtType", ClBCrCrdtApprCrdtType.values());
+        model.addAttribute("CreditStatus", CreditStatus.values());
+        return "approval/approval";
+    }
 
-		return "redirect:/approval/query";
-	}
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable String id, HttpSession session) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
+        approvalService.deleteByPrimaryKey(id);
 
-	@RequestMapping("/init")
-	public String init(HttpSession session) {
-		if (!commonServiceUtil.checkSession(session)) {
-			return "redirect:/login.jsp";
-		}
-		return "approval/approval";
-	}
+        return "redirect:/approval/query";
+    }
+
+    @RequestMapping("/init")
+    public String init(Approval approval, HttpSession session, Map<String, Object> map) {
+        if (!commonServiceUtil.checkSession(session)) {
+            return "redirect:/login.jsp";
+        }
+        map.put("approval", approval);
+        map.put("ClBCrCrdtApprCrdtType", ClBCrCrdtApprCrdtType.values());
+        map.put("CreditStatus", CreditStatus.values());
+        return "approval/approval";
+    }
 
 }

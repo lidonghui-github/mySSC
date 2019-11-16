@@ -81,17 +81,43 @@
             <td>${u.rescriptumno }</td>
             <td>${u.custNo }</td>
             <td>${u.rootNo }</td>
-            <td>${u.crdtType }</td>
+                <%-- <td>${u.crdtType }</td>--%>
+            <td>
+                <c:forEach items="${ClBCrCrdtApprCrdtType}" var="v">
+                    <c:if test="${v.code ==u.crdtType}"><c:out value="${v.name}"/></c:if>
+                </c:forEach>
+            </td>
             <td>${u.apprAmt }</td>
             <td>${u.useApprAmt }</td>
             <td>${u.frozApprAmt }</td>
             <td>${u.enabApprAmt }</td>
-            <td>${u.crdtStat }</td>
-            <td>${u.frozStat }</td>
-            <td>${u.covIntoFlag }</td>
-            <td>${u.covReplFlag }</td>
-            <td><fmt:formatDate value="${u.crdtValdDate}" pattern="yyyy-MM-dd"/> </td>
-            <td><fmt:formatDate value="${u.crdtEndDate }" pattern="yyyy-MM-dd"/> </td>
+           <%-- <td>${u.crdtStat }</td>--%>
+            <td>
+                <c:forEach items="${CreditStatus}" var="v">
+                    <c:if test="${v.code ==u.crdtStat}"><c:out value="${v.name}"/></c:if>
+                </c:forEach>
+            </td>
+           <%-- <td>${u.frozStat }</td>--%>
+            <td>
+                <c:forEach items="${FrozStat}" var="v">
+                    <c:if test="${v.code ==u.frozStat}"><c:out value="${v.name}"/></c:if>
+                </c:forEach>
+            </td>
+            <%--<td>${u.covIntoFlag }</td>--%>
+            <td>
+                <c:forEach items="${IsIf}" var="v">
+                    <c:if test="${v.code ==u.covIntoFlag}"><c:out value="${v.name}"/></c:if>
+                </c:forEach>
+            </td>
+
+           <%-- <td>${u.covReplFlag }</td>--%>
+            <td>
+            <c:forEach items="${IsIf}" var="v">
+                <c:if test="${v.code ==u.covReplFlag}"><c:out value="${v.name}"/></c:if>
+            </c:forEach>
+            </td>
+            <td><fmt:formatDate value="${u.crdtValdDate}" pattern="yyyy-MM-dd"/></td>
+            <td><fmt:formatDate value="${u.crdtEndDate }" pattern="yyyy-MM-dd"/></td>
             <td><fmt:formatDate value="${u.crtTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
             <td><fmt:formatDate value="${u.updTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
             <td>${u.verNo }</td>
