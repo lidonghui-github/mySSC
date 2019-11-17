@@ -22,4 +22,6 @@ public interface ApprovalMapper {
     List<Approval> query(BaseConditionVO vo);
 
     Approval findApprovalByApprNo(@Param("apprNo") String apprNo);
+
+    List<Approval> findApprovalByRootNo(@Param("rootNo") String rootNo);
 }

@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.hd.mapper.ApprovalMapper" >
-  <resultMap id="BaseResultMap" type="cn.hd.model.Approval" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="rescriptumno" property="rescriptumno" jdbcType="VARCHAR" />
-    <result column="cust_no" property="custNo" jdbcType="VARCHAR" />
-    <result column="root_no" property="rootNo" jdbcType="VARCHAR" />
-    <result column="crdt_type" property="crdtType" jdbcType="VARCHAR" />
-    <result column="appr_amt" property="apprAmt" jdbcType="BIGINT" />
-    <result column="use_appr_amt" property="useApprAmt" jdbcType="BIGINT" />
-    <result column="froz_appr_amt" property="frozApprAmt" jdbcType="BIGINT" />
-    <result column="enab_appr_amt" property="enabApprAmt" jdbcType="BIGINT" />
-    <result column="crdt_stat" property="crdtStat" jdbcType="VARCHAR" />
-    <result column="froz_stat" property="frozStat" jdbcType="VARCHAR" />
-    <result column="cov_into_flag" property="covIntoFlag" jdbcType="VARCHAR" />
-    <result column="cov_repl_flag" property="covReplFlag" jdbcType="VARCHAR" />
-    <result column="crdt_vald_date" property="crdtValdDate" jdbcType="DATE" />
-    <result column="crdt_end_date" property="crdtEndDate" jdbcType="DATE" />
-    <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
-    <result column="upd_time" property="updTime" jdbcType="TIMESTAMP" />
-    <result column="ver_no" property="verNo" jdbcType="INTEGER" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="cn.hd.mapper.ApprovalMapper">
+    <resultMap id="BaseResultMap" type="cn.hd.model.Approval">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="rescriptumno" property="rescriptumno" jdbcType="VARCHAR"/>
+        <result column="cust_no" property="custNo" jdbcType="VARCHAR"/>
+        <result column="root_no" property="rootNo" jdbcType="VARCHAR"/>
+        <result column="crdt_type" property="crdtType" jdbcType="VARCHAR"/>
+        <result column="appr_amt" property="apprAmt" jdbcType="BIGINT"/>
+        <result column="use_appr_amt" property="useApprAmt" jdbcType="BIGINT"/>
+        <result column="froz_appr_amt" property="frozApprAmt" jdbcType="BIGINT"/>
+        <result column="enab_appr_amt" property="enabApprAmt" jdbcType="BIGINT"/>
+        <result column="crdt_stat" property="crdtStat" jdbcType="VARCHAR"/>
+        <result column="froz_stat" property="frozStat" jdbcType="VARCHAR"/>
+        <result column="cov_into_flag" property="covIntoFlag" jdbcType="VARCHAR"/>
+        <result column="cov_repl_flag" property="covReplFlag" jdbcType="VARCHAR"/>
+        <result column="crdt_vald_date" property="crdtValdDate" jdbcType="DATE"/>
+        <result column="crdt_end_date" property="crdtEndDate" jdbcType="DATE"/>
+        <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP"/>
+        <result column="upd_time" property="updTime" jdbcType="TIMESTAMP"/>
+        <result column="ver_no" property="verNo" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, rescriptumno, cust_no as custNo, root_no as rootNo, crdt_type as crdtType, appr_amt as apprAmt , use_appr_amt as useApprAmt, froz_appr_amt as frozApprAmt,
     enab_appr_amt as enabApprAmt, crdt_stat as crdtStat, froz_stat as frozStat, cov_into_flag as covIntoFlag, cov_repl_flag as covReplFlag, crdt_vald_date as crdtValdDate,
     crdt_end_date as crdtEndDate, crt_time as crtTime, upd_time as updTime, ver_no as verNo, remark
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_appr
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_appr
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_appr
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="cn.hd.model.Approval" >
+    <insert id="insert" parameterType="cn.hd.model.Approval">
     insert into t_appr (id, rescriptumno, cust_no, 
       root_no, crdt_type, appr_amt, 
       use_appr_amt, froz_appr_amt, enab_appr_amt, 
@@ -53,188 +53,188 @@
       #{crtTime,jdbcType=TIMESTAMP}, #{updTime,jdbcType=TIMESTAMP}, #{verNo,jdbcType=INTEGER}, 
       #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.hd.model.Approval" >
-    insert into t_appr
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="rescriptumno != null" >
-        rescriptumno,
-      </if>
-      <if test="custNo != null" >
-        cust_no,
-      </if>
-      <if test="rootNo != null" >
-        root_no,
-      </if>
-      <if test="crdtType != null" >
-        crdt_type,
-      </if>
-      <if test="apprAmt != null" >
-        appr_amt,
-      </if>
-      <if test="useApprAmt != null" >
-        use_appr_amt,
-      </if>
-      <if test="frozApprAmt != null" >
-        froz_appr_amt,
-      </if>
-      <if test="enabApprAmt != null" >
-        enab_appr_amt,
-      </if>
-      <if test="crdtStat != null" >
-        crdt_stat,
-      </if>
-      <if test="frozStat != null" >
-        froz_stat,
-      </if>
-      <if test="covIntoFlag != null" >
-        cov_into_flag,
-      </if>
-      <if test="covReplFlag != null" >
-        cov_repl_flag,
-      </if>
-      <if test="crdtValdDate != null" >
-        crdt_vald_date,
-      </if>
-      <if test="crdtEndDate != null" >
-        crdt_end_date,
-      </if>
-      <if test="crtTime != null" >
-        crt_time,
-      </if>
-      <if test="updTime != null" >
-        upd_time,
-      </if>
-      <if test="verNo != null" >
-        ver_no,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="rescriptumno != null" >
-        #{rescriptumno,jdbcType=VARCHAR},
-      </if>
-      <if test="custNo != null" >
-        #{custNo,jdbcType=VARCHAR},
-      </if>
-      <if test="rootNo != null" >
-        #{rootNo,jdbcType=VARCHAR},
-      </if>
-      <if test="crdtType != null" >
-        #{crdtType,jdbcType=VARCHAR},
-      </if>
-      <if test="apprAmt != null" >
-        #{apprAmt,jdbcType=BIGINT},
-      </if>
-      <if test="useApprAmt != null" >
-        #{useApprAmt,jdbcType=BIGINT},
-      </if>
-      <if test="frozApprAmt != null" >
-        #{frozApprAmt,jdbcType=BIGINT},
-      </if>
-      <if test="enabApprAmt != null" >
-        #{enabApprAmt,jdbcType=BIGINT},
-      </if>
-      <if test="crdtStat != null" >
-        #{crdtStat,jdbcType=VARCHAR},
-      </if>
-      <if test="frozStat != null" >
-        #{frozStat,jdbcType=VARCHAR},
-      </if>
-      <if test="covIntoFlag != null" >
-        #{covIntoFlag,jdbcType=VARCHAR},
-      </if>
-      <if test="covReplFlag != null" >
-        #{covReplFlag,jdbcType=VARCHAR},
-      </if>
-      <if test="crdtValdDate != null" >
-        #{crdtValdDate,jdbcType=DATE},
-      </if>
-      <if test="crdtEndDate != null" >
-        #{crdtEndDate,jdbcType=DATE},
-      </if>
-      <if test="crtTime != null" >
-        #{crtTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updTime != null" >
-        #{updTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="verNo != null" >
-        #{verNo,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.Approval" >
-    update t_appr
-    <set >
-      <if test="rescriptumno != null" >
-        rescriptumno = #{rescriptumno,jdbcType=VARCHAR},
-      </if>
-      <if test="custNo != null" >
-        cust_no = #{custNo,jdbcType=VARCHAR},
-      </if>
-      <if test="rootNo != null" >
-        root_no = #{rootNo,jdbcType=VARCHAR},
-      </if>
-      <if test="crdtType != null" >
-        crdt_type = #{crdtType,jdbcType=VARCHAR},
-      </if>
-      <if test="apprAmt != null" >
-        appr_amt = #{apprAmt,jdbcType=BIGINT},
-      </if>
-      <if test="useApprAmt != null" >
-        use_appr_amt = #{useApprAmt,jdbcType=BIGINT},
-      </if>
-      <if test="frozApprAmt != null" >
-        froz_appr_amt = #{frozApprAmt,jdbcType=BIGINT},
-      </if>
-      <if test="enabApprAmt != null" >
-        enab_appr_amt = #{enabApprAmt,jdbcType=BIGINT},
-      </if>
-      <if test="crdtStat != null" >
-        crdt_stat = #{crdtStat,jdbcType=VARCHAR},
-      </if>
-      <if test="frozStat != null" >
-        froz_stat = #{frozStat,jdbcType=VARCHAR},
-      </if>
-      <if test="covIntoFlag != null" >
-        cov_into_flag = #{covIntoFlag,jdbcType=VARCHAR},
-      </if>
-      <if test="covReplFlag != null" >
-        cov_repl_flag = #{covReplFlag,jdbcType=VARCHAR},
-      </if>
-      <if test="crdtValdDate != null" >
-        crdt_vald_date = #{crdtValdDate,jdbcType=DATE},
-      </if>
-      <if test="crdtEndDate != null" >
-        crdt_end_date = #{crdtEndDate,jdbcType=DATE},
-      </if>
-      <if test="crtTime != null" >
-        crt_time = #{crtTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updTime != null" >
-        upd_time = #{updTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="verNo != null" >
-        ver_no = #{verNo,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.hd.model.Approval" >
+    <insert id="insertSelective" parameterType="cn.hd.model.Approval">
+        insert into t_appr
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="rescriptumno != null">
+                rescriptumno,
+            </if>
+            <if test="custNo != null">
+                cust_no,
+            </if>
+            <if test="rootNo != null">
+                root_no,
+            </if>
+            <if test="crdtType != null">
+                crdt_type,
+            </if>
+            <if test="apprAmt != null">
+                appr_amt,
+            </if>
+            <if test="useApprAmt != null">
+                use_appr_amt,
+            </if>
+            <if test="frozApprAmt != null">
+                froz_appr_amt,
+            </if>
+            <if test="enabApprAmt != null">
+                enab_appr_amt,
+            </if>
+            <if test="crdtStat != null">
+                crdt_stat,
+            </if>
+            <if test="frozStat != null">
+                froz_stat,
+            </if>
+            <if test="covIntoFlag != null">
+                cov_into_flag,
+            </if>
+            <if test="covReplFlag != null">
+                cov_repl_flag,
+            </if>
+            <if test="crdtValdDate != null">
+                crdt_vald_date,
+            </if>
+            <if test="crdtEndDate != null">
+                crdt_end_date,
+            </if>
+            <if test="crtTime != null">
+                crt_time,
+            </if>
+            <if test="updTime != null">
+                upd_time,
+            </if>
+            <if test="verNo != null">
+                ver_no,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="rescriptumno != null">
+                #{rescriptumno,jdbcType=VARCHAR},
+            </if>
+            <if test="custNo != null">
+                #{custNo,jdbcType=VARCHAR},
+            </if>
+            <if test="rootNo != null">
+                #{rootNo,jdbcType=VARCHAR},
+            </if>
+            <if test="crdtType != null">
+                #{crdtType,jdbcType=VARCHAR},
+            </if>
+            <if test="apprAmt != null">
+                #{apprAmt,jdbcType=BIGINT},
+            </if>
+            <if test="useApprAmt != null">
+                #{useApprAmt,jdbcType=BIGINT},
+            </if>
+            <if test="frozApprAmt != null">
+                #{frozApprAmt,jdbcType=BIGINT},
+            </if>
+            <if test="enabApprAmt != null">
+                #{enabApprAmt,jdbcType=BIGINT},
+            </if>
+            <if test="crdtStat != null">
+                #{crdtStat,jdbcType=VARCHAR},
+            </if>
+            <if test="frozStat != null">
+                #{frozStat,jdbcType=VARCHAR},
+            </if>
+            <if test="covIntoFlag != null">
+                #{covIntoFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="covReplFlag != null">
+                #{covReplFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="crdtValdDate != null">
+                #{crdtValdDate,jdbcType=DATE},
+            </if>
+            <if test="crdtEndDate != null">
+                #{crdtEndDate,jdbcType=DATE},
+            </if>
+            <if test="crtTime != null">
+                #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updTime != null">
+                #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="verNo != null">
+                #{verNo,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.hd.model.Approval">
+        update t_appr
+        <set>
+            <if test="rescriptumno != null">
+                rescriptumno = #{rescriptumno,jdbcType=VARCHAR},
+            </if>
+            <if test="custNo != null">
+                cust_no = #{custNo,jdbcType=VARCHAR},
+            </if>
+            <if test="rootNo != null">
+                root_no = #{rootNo,jdbcType=VARCHAR},
+            </if>
+            <if test="crdtType != null">
+                crdt_type = #{crdtType,jdbcType=VARCHAR},
+            </if>
+            <if test="apprAmt != null">
+                appr_amt = #{apprAmt,jdbcType=BIGINT},
+            </if>
+            <if test="useApprAmt != null">
+                use_appr_amt = #{useApprAmt,jdbcType=BIGINT},
+            </if>
+            <if test="frozApprAmt != null">
+                froz_appr_amt = #{frozApprAmt,jdbcType=BIGINT},
+            </if>
+            <if test="enabApprAmt != null">
+                enab_appr_amt = #{enabApprAmt,jdbcType=BIGINT},
+            </if>
+            <if test="crdtStat != null">
+                crdt_stat = #{crdtStat,jdbcType=VARCHAR},
+            </if>
+            <if test="frozStat != null">
+                froz_stat = #{frozStat,jdbcType=VARCHAR},
+            </if>
+            <if test="covIntoFlag != null">
+                cov_into_flag = #{covIntoFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="covReplFlag != null">
+                cov_repl_flag = #{covReplFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="crdtValdDate != null">
+                crdt_vald_date = #{crdtValdDate,jdbcType=DATE},
+            </if>
+            <if test="crdtEndDate != null">
+                crdt_end_date = #{crdtEndDate,jdbcType=DATE},
+            </if>
+            <if test="crtTime != null">
+                crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updTime != null">
+                upd_time = #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="verNo != null">
+                ver_no = #{verNo,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.hd.model.Approval">
     update t_appr
     set rescriptumno = #{rescriptumno,jdbcType=VARCHAR},
       cust_no = #{custNo,jdbcType=VARCHAR},
@@ -258,26 +258,33 @@
   </update>
 
 
-  <select id="query" resultType="cn.hd.model.Approval" parameterType="BaseConditionVO">
-    select
-    <include refid="Base_Column_List"/>
-    from t_appr
-    <where>
-      <if test="keywords!=null">
-        rescriptumno like "%"#{keywords}"%"
-        or
-        cust_no like  "%"#{keywords}"%"
-        or
-        root_no like  "%"#{keywords}"%"
-      </if>
-    </where>
-  </select>
+    <select id="query" resultType="cn.hd.model.Approval" parameterType="BaseConditionVO">
+        select
+        <include refid="Base_Column_List"/>
+        from t_appr
+        <where>
+            <if test="keywords!=null">
+                rescriptumno like "%"#{keywords}"%"
+                or
+                cust_no like "%"#{keywords}"%"
+                or
+                root_no like "%"#{keywords}"%"
+            </if>
+        </where>
+    </select>
 
 
-  <select id="findApprovalByApprNo" resultType="cn.hd.model.Approval" parameterType="BaseConditionVO">
-    select
-    <include refid="Base_Column_List"/>
-    from t_appr
-    where rescriptumno = #{apprNo}
-  </select>
+    <select id="findApprovalByApprNo" resultType="cn.hd.model.Approval" parameterType="String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_appr
+        where rescriptumno = #{apprNo}
+    </select>
+
+    <select id="findApprovalByRootNo" resultType="cn.hd.model.Approval" parameterType="String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_appr
+        where root_no = #{rootNo}
+    </select>
 </mapper>

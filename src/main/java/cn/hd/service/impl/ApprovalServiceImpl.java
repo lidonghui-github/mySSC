@@ -1,6 +1,7 @@
 package cn.hd.service.impl;
 
 import cn.hd.approvalUtils.ApprovalUtil;
+import cn.hd.enums.AxCode;
 import cn.hd.mapper.ApprovalMapper;
 import cn.hd.model.Approval;
 import cn.hd.model.BaseConditionVO;
@@ -15,12 +16,14 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 @Service
 public class ApprovalServiceImpl implements IApprovalService {
     @Resource
     ApprovalMapper approvalMapper;
     @Resource
     ApprovalUtil approvalUtil;
+
     @Override
     public List<Approval> queryAll() {
         return null;
@@ -33,7 +36,7 @@ public class ApprovalServiceImpl implements IApprovalService {
 
     @Override
     public int insert(Approval record) {
-        approvalUtil.initApprovalInfo(record);
+        approvalUtil.initApprovalInfo(record, AxCode.额度新增.getCode());
         return approvalMapper.insert(record);
     }
 
@@ -54,13 +57,14 @@ public class ApprovalServiceImpl implements IApprovalService {
 
     @Override
     public int updateByPrimaryKey(Approval record) {
+        approvalUtil.updateApprovalInfo(record,AxCode.额度修改.getCode());
         return approvalMapper.updateByPrimaryKey(record);
     }
 
     @Override
     public PageInfo<Approval> query(BaseConditionVO vo) {
         PageHelper.startPage(vo.getPageNum(), vo.getPageSize());
-        List<Approval> list=approvalMapper.query(vo);
+        List<Approval> list = approvalMapper.query(vo);
         System.out.println(list.size());
         PageInfo<Approval> pageInfo = new PageInfo<Approval>(list);
         return pageInfo;

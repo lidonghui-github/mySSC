@@ -101,4 +101,8 @@ public class BigDecimalUtil {
     public static Integer subtract1(Integer a1, Integer a2) {
         return a1.intValue()-a2.intValue();
     }
+
+    public static Long subtract2(Long a1, Long a2) {
+        return a1.longValue()-a2.longValue();
+    }
 }

@@ -52,10 +52,8 @@ public class ApprovalController {
             return "redirect:/login.jsp";
         }
         if (StringUtil.isNotNull(approval.getId())) {
-            int k = approvalService.updateByPrimaryKey(approval);
-            System.out.println("**********" + k + "@@@@@@@@@@@@@@@");
+            approvalService.updateByPrimaryKey(approval);
         } else {
-            approval.setId(UUIDUtil.getNumId().substring(0, 18));
             approvalService.insert(approval);
         }
         return "redirect:/approval/query";
