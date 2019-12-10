@@ -18,15 +18,27 @@
     <link href="assets/css/main-min.css" rel="stylesheet" type="text/css"/>
 
 </head>
+<script type="text/javascript">
+    function showTime() {
+        var  span=document.getElementById("mySpan");
+        var  date=new Date();
+        span.innerHTML=date.toLocaleString();
+
+    }
+    window.setInterval('showTime();',1000);
+</script>
 <body>
 
 <div class="header">
 
     <div class="dl-title">
-        <!--<img src="/chinapost/Public/assets/img/top.png">-->
+
     </div>
     <div class="dl-log">
-        欢迎您，<span class="dl-log-user">用户:${sessionScope.username}</span><a href="<%=basePath%>/login/login" title="退出系统" class="dl-log-quit">[退出]</a>
+        欢迎您，<span class="dl-log-user">用户:${sessionScope.username}</span>
+        <input type="button" value="清理缓存" onclick="alert('清理成功!');"/>
+        当前时间:<span id="mySpan"></span>
+        <a href="<%=basePath%>/login/login" title="退出系统" class="dl-log-quit">[退出]</a><br/>
     </div>
 </div>
 <div class="content">
