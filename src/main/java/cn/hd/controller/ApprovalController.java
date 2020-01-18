@@ -33,9 +33,7 @@ public class ApprovalController {
 
     @RequestMapping("/query")
     public String query(BaseConditionVO vo, Model model, HttpSession session) {
-        if (!commonServiceUtil.checkSession(session)) {
-            return "redirect:/login.jsp";
-        }
+
         PageInfo<Approval> pageInfo = approvalService.query(vo);
         model.addAttribute("pageModel", pageInfo);
         model.addAttribute("vo", vo);
@@ -48,9 +46,7 @@ public class ApprovalController {
 
     @RequestMapping("/save")
     public String save(Approval approval, HttpSession session) {
-        if (!commonServiceUtil.checkSession(session)) {
-            return "redirect:/login.jsp";
-        }
+
         if (StringUtil.isNotNull(approval.getId())) {
             approvalService.updateByPrimaryKey(approval);
         } else {
@@ -62,9 +58,7 @@ public class ApprovalController {
 
     @RequestMapping("/updatePage/{id}")
     public String updatePage(@PathVariable String id, Model model, HttpSession session) {
-        if (!commonServiceUtil.checkSession(session)) {
-            return "redirect:/login.jsp";
-        }
+
         Approval approval = approvalService.selectByPrimaryKey(id);
         model.addAttribute("approval", approval);
         model.addAttribute("ClBCrCrdtApprCrdtType", ClBCrCrdtApprCrdtType.values());
@@ -74,9 +68,7 @@ public class ApprovalController {
 
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable String id, HttpSession session) {
-        if (!commonServiceUtil.checkSession(session)) {
-            return "redirect:/login.jsp";
-        }
+
         approvalService.deleteByPrimaryKey(id);
 
         return "redirect:/approval/query";
@@ -84,9 +76,7 @@ public class ApprovalController {
 
     @RequestMapping("/init")
     public String init(Approval approval, HttpSession session, Map<String, Object> map) {
-        if (!commonServiceUtil.checkSession(session)) {
-            return "redirect:/login.jsp";
-        }
+
         map.put("approval", approval);
         map.put("ClBCrCrdtApprCrdtType", ClBCrCrdtApprCrdtType.values());
         map.put("CreditStatus", CreditStatus.values());

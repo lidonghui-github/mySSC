@@ -70,10 +70,16 @@
             <tx:method name="*" propagation="SUPPORTS" />
         </tx:attributes>
     </tx:advice>
-    
+    <bean id="commonServiceUtil" class="cn.hd.utils.CommonServiceUtil"/>
     <!-- 切面，将事物用在哪些对象上 -->
     <aop:config>
         <aop:pointcut id="transactionPointcut" expression="execution(* cn.hd.service.impl.*Impl.*(..))" />
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
+		<aop:aspect ref="commonServiceUtil">
+			<aop:pointcut id="LoginUtilPointCut" expression="execution(* cn.hd.controller.ApprovalController.*(..))"/>
+			<aop:before method="methodBefore" pointcut-ref="LoginUtilPointCut"/>
+			<aop:after method="methodAfter" pointcut-ref="LoginUtilPointCut"/>
+		</aop:aspect>
+		
     </aop:config>
 </beans>
