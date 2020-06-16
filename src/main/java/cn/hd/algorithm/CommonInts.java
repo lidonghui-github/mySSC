@@ -20,5 +20,6 @@ public class CommonInts {
         }
         System.out.println();
         return arr;
+
     }
 }
