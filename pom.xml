@@ -104,7 +104,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.4.1</version>
+			<version>3.5.6</version>
 		</dependency>
 		<!-- mybatis与spring的整合包 -->
 		<dependency>
